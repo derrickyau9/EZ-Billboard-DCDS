@@ -1,0 +1,1610 @@
+<!-- EZ Billboard Event Template by Derrick Yao (.8, dot-eight) | yaomengy.com | https://github.com/derrickyau9 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event Billboard - Live Events | EZ Billboard by Derrick Yao</title>
+  <meta name="description" content="Dynamic event billboard template - EZ Billboard by Derrick Yao (.8, dot-eight)">
+  <meta name="author" content="Derrick Yao - yaomengy.com">
+  <meta name="license" content="CC BY-NC 4.0 - Creative Commons Attribution-NonCommercial 4.0 International">
+  <meta name="copyright" content="Copyright (c) 2024 Derrick Yao (.8, dot-eight)">
+  <!-- Watermark: .8, dot-eight | Created by Derrick Yao | yaomengy.com | https://github.com/derrickyau9 -->
+</head>
+<body>
+
+<!-- EZ Billboard Event Container - by Derrick Yao (.8, dot-eight) -->
+<div class="event-billboard-container" id="eventBillboardContainer">
+  <div class="event-showcase">
+
+    <!-- ===== HERO WITH VIDEO (16:9 ASPECT RATIO) ===== -->
+    <section class="event-hero" aria-label="Live Event Showcase">
+      <!-- Brand with glass -->
+      <div class="event-brand glass-effect">
+        <img id="dynamicEventLogo" src="Zoey's Apt logo.png" alt="Zoey's Apt Logo" height="44" width="120" />
+        <span class="event-dot">•</span>
+        <span id="dynamicEventTag" class="event-tag">Live Events · Showcase</span>
+      </div>
+
+      <!-- 16:9 Video container -->
+      <video 
+        class="event-events-hero__video"
+        autoplay 
+        muted 
+        loop 
+        playsinline
+        webkit-playsinline
+        preload="auto"
+        poster="https://via.placeholder.com/1920x1080/000/fff?text=EVENT+POSTER">
+        <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <div class="event-hero__overlay"></div>
+
+      <!-- Logo intro animation (centered) -->
+      <div class="event-hero__intro-logo">
+        <img src="Zoey's Apt logo.png" alt="Zoey's Apt Logo" />
+      </div>
+
+      <!-- Title glass moved to bottom left -->
+      <div class="event-title-glass glass-effect">
+        <div class="event-glass-logo">
+          <img src="Zoey's Apt logo.png" alt="Zoey's Apt Logo" />
+        </div>
+        <div class="event-glass-content">
+          <h1 id="dynamicEventTitle" class="event-glass-title">Live Event Night</h1>
+          <p id="dynamicEventSub" class="event-sub">Every Last Thursday · 7PM - 9PM · Your Venue Address</p>
+        </div>
+      </div>
+
+      <!-- Countdown Timer -->
+      <div class="event-countdown-glass glass-effect">
+        <div class="event-countdown-header">
+          <span class="event-countdown-label">Next Event</span>
+          <span class="event-countdown-date" id="eventDate"></span>
+        </div>
+        <div class="event-countdown-timer" id="eventCountdownTimer">
+          <div class="event-countdown-unit">
+            <span class="event-countdown-value" id="eventDays">00</span>
+            <span class="event-countdown-unit-label">Days</span>
+          </div>
+          <div class="event-countdown-separator">:</div>
+          <div class="event-countdown-unit">
+            <span class="event-countdown-value" id="eventHours">00</span>
+            <span class="event-countdown-unit-label">Hours</span>
+          </div>
+          <div class="event-countdown-separator">:</div>
+          <div class="event-countdown-unit">
+            <span class="event-countdown-value" id="eventMinutes">00</span>
+            <span class="event-countdown-unit-label">Min</span>
+          </div>
+          <div class="event-countdown-separator">:</div>
+          <div class="event-countdown-unit">
+            <span class="event-countdown-value" id="eventSeconds">00</span>
+            <span class="event-countdown-unit-label">Sec</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Event Live Logos (shown during event) -->
+      <div class="event-live-logos" id="eventLiveLogos">
+        <div class="event-logo-transition">
+          <img src="Zoey's Apt logo.png" alt="Zoey's Apt Logo" />
+        </div>
+        <div class="event-live-logo">
+          <img src="Zoey's Apt logo.png" alt="Zoey's Apt Logo" />
+          <div class="event-live-indicator">LIVE NOW</div>
+        </div>
+      </div>
+
+      <!-- Fallback logo in corner -->
+      <img class="event-hero__fallback" 
+           src="Zoey's Apt logo.png" 
+           alt="Zoey's Apt Logo" />
+    </section>
+
+    <!-- ===== EVENT INFO SECTION ===== -->
+    <section class="event-info">
+      <div class="event-info__container">
+        <div class="event-info__header">
+          <h2 id="dynamicEventInfoTitle" class="event-info__title">LIVE EVENT SHOWCASE</h2>
+          <p id="dynamicEventSchedule" class="event-info__schedule">Every LAST Thursday of the Month</p>
+          <p id="dynamicEventLocation" class="event-info__location">Your Event Venue<br>123 Main Street, Your City, State 12345</p>
+        </div>
+
+        <div class="event-info__content">
+          <p id="dynamicEventDescription" class="event-info__description">
+            Join us for an evening of amazing entertainment at our Live Event Showcase, held every last thursday of the month at our venue. Get ready to experience incredible performances and take part in an unforgettable night. Whether you're a performer or audience member, all ages and styles are welcome!
+          </p>
+
+          <img src="https://via.placeholder.com/600x600/333/fff?text=EVENT+IMAGE" 
+               alt="Live Event Showcase" 
+               class="event-info__image" />
+
+          <div class="event-info__details">
+            <p class="event-info__signup">Doors open at 6pm</p>
+            <p class="event-info__timing">event starts at 7:00<br>first come first serve<br>all ages / free parking</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EZ Billboard Watermark - by Derrick Yao (.8, dot-eight) -->
+    <div class="ez-billboard-watermark">
+      <p>Powered by <a href="https://yaomengy.com" target="_blank">EZ Billboard</a> | Created by <a href="https://github.com/derrickyau9" target="_blank">Derrick Yao</a> (.8, dot-eight)</p>
+    </div>
+    
+    <!-- Hidden Watermark Protection - DO NOT REMOVE -->
+    <div id="hw-protection" style="position:absolute;top:-9999px;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none;"></div>
+
+  </div>
+</div>
+
+<!-- ===== SCRIPT - EZ Billboard by Derrick Yao (.8, dot-eight) ===== -->
+<script>
+// EZ Billboard Dynamic Event Configuration System
+// Created by Derrick Yao (.8, dot-eight) - yaomengy.com - https://github.com/derrickyau9
+(function() {
+  'use strict';
+  
+  var containerEl = document.getElementById('eventBillboardContainer');
+  if (!containerEl) return;
+  
+  var STORAGE_KEY = 'eventBillboardAnimationsPlayed';
+  var animationsPlayed = sessionStorage.getItem(STORAGE_KEY);
+  var eventWasLive = false;
+  var countdownInterval = null;
+  
+  function getLastThursdayOfMonth(year, month) {
+    var lastDay = new Date(year, month + 1, 0);
+    var lastDate = lastDay.getDate();
+    
+    for (var day = lastDate; day > 0; day--) {
+      var checkDate = new Date(year, month, day);
+      if (checkDate.getDay() === 4) {
+        checkDate.setHours(19, 0, 0, 0);
+        return checkDate;
+      }
+    }
+  }
+
+  function getNextLastThursday() {
+    var now = new Date();
+    var currentYear = now.getFullYear();
+    var currentMonth = now.getMonth();
+    
+    var nextEvent = getLastThursdayOfMonth(currentYear, currentMonth);
+    var eventEnd = new Date(nextEvent);
+    eventEnd.setHours(21, 0, 0, 0);
+    
+    if (eventEnd <= now) {
+      if (currentMonth === 11) {
+        nextEvent = getLastThursdayOfMonth(currentYear + 1, 0);
+      } else {
+        nextEvent = getLastThursdayOfMonth(currentYear, currentMonth + 1);
+      }
+    }
+    
+    return nextEvent;
+  }
+
+  function isEventHappening() {
+    var now = new Date();
+    var nextEvent = getNextLastThursday();
+    var eventEnd = new Date(nextEvent);
+    eventEnd.setHours(21, 0, 0, 0);
+    
+    return now >= nextEvent && now < eventEnd;
+  }
+
+  function checkEventStatus() {
+    var isLive = isEventHappening();
+    var video = containerEl.querySelector('.event-hero__video');
+    var eventLogos = containerEl.querySelector('#eventLiveLogos');
+    
+    if (isLive && !eventWasLive) {
+      eventWasLive = true;
+      containerEl.classList.add('event-is-live');
+      
+      if (video) {
+        video.style.transition = 'opacity 2s ease-out';
+        video.style.opacity = '0';
+        setTimeout(function() {
+          if (!video.paused) {
+            video.pause();
+          }
+        }, 2000);
+      }
+      
+      setTimeout(function() {
+        eventLogos.style.display = 'flex';
+        setTimeout(function() {
+          eventLogos.classList.add('event-active');
+        }, 100);
+      }, 2000);
+      
+    } else if (!isLive && eventWasLive) {
+      eventWasLive = false;
+      containerEl.classList.remove('event-is-live');
+      
+      eventLogos.classList.remove('event-active');
+      setTimeout(function() {
+        eventLogos.style.display = 'none';
+        
+        if (video) {
+          var playVideo = function() {
+            video.play().catch(function(error) {
+              console.log('Video restart failed:', error);
+            });
+            video.style.opacity = '1';
+          };
+          
+          if (video.readyState >= 2) {
+            playVideo();
+          } else {
+            video.addEventListener('canplay', playVideo, { once: true });
+            video.load();
+          }
+        }
+      }, 1000);
+    } else if (isLive) {
+      containerEl.classList.add('event-is-live');
+      if (video && !video.paused) {
+        video.style.opacity = '0';
+        video.pause();
+      }
+      eventLogos.style.display = 'flex';
+      eventLogos.classList.add('event-active');
+      eventWasLive = true;
+    }
+  }
+
+  function updateCountdown() {
+    var countdownTimer = containerEl.querySelector('#eventCountdownTimer');
+    var countdownHeader = containerEl.querySelector('.event-countdown-header');
+    var countdownGlass = containerEl.querySelector('.event-countdown-glass');
+    
+    checkEventStatus();
+    
+    if (isEventHappening()) {
+      countdownHeader.innerHTML = 
+        '<span class="event-countdown-label event-live">HAPPENING NOW!</span>' +
+        '<span class="event-countdown-date">Until 9 PM</span>';
+      countdownTimer.innerHTML = 
+        '<div class="event-live-message">' +
+        'Event is LIVE<br>' +
+        '<span class="event-time">7:00 PM - 9:00 PM</span>' +
+        '</div>';
+      countdownGlass.classList.add('event-active');
+      return;
+    } else {
+      countdownGlass.classList.remove('event-active');
+    }
+    
+    var now = new Date().getTime();
+    var eventDate = getNextLastThursday().getTime();
+    var distance = eventDate - now;
+    
+    if (distance < 0) {
+      initCountdown();
+      return;
+    }
+    
+    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    
+    if (countdownTimer.querySelector('.event-live-message')) {
+      var nextEvent = getNextLastThursday();
+      var options = { month: 'short', day: 'numeric', year: 'numeric' };
+      countdownTimer.innerHTML = 
+        '<div class="event-countdown-unit">' +
+        '<span class="event-countdown-value" id="eventDays">00</span>' +
+        '<span class="event-countdown-unit-label">Days</span></div>' +
+        '<div class="event-countdown-separator">:</div>' +
+        '<div class="event-countdown-unit">' +
+        '<span class="event-countdown-value" id="eventHours">00</span>' +
+        '<span class="event-countdown-unit-label">Hours</span></div>' +
+        '<div class="event-countdown-separator">:</div>' +
+        '<div class="event-countdown-unit">' +
+        '<span class="event-countdown-value" id="eventMinutes">00</span>' +
+        '<span class="event-countdown-unit-label">Min</span></div>' +
+        '<div class="event-countdown-separator">:</div>' +
+        '<div class="event-countdown-unit">' +
+        '<span class="event-countdown-value" id="eventSeconds">00</span>' +
+        '<span class="event-countdown-unit-label">Sec</span></div>';
+      
+      countdownHeader.innerHTML = 
+        '<span class="event-countdown-label">Next Event</span>' +
+        '<span class="event-countdown-date" id="eventDate">' + 
+        nextEvent.toLocaleDateString('en-US', options) + '</span>';
+    }
+    
+    var daysEl = containerEl.querySelector('#eventDays');
+    var hoursEl = containerEl.querySelector('#eventHours');
+    var minutesEl = containerEl.querySelector('#eventMinutes');
+    var secondsEl = containerEl.querySelector('#eventSeconds');
+    
+    if (daysEl) daysEl.textContent = String(days).padStart(2, '0');
+    if (hoursEl) hoursEl.textContent = String(hours).padStart(2, '0');
+    if (minutesEl) minutesEl.textContent = String(minutes).padStart(2, '0');
+    if (secondsEl) secondsEl.textContent = String(seconds).padStart(2, '0');
+  }
+
+  function initCountdown() {
+    if (countdownInterval) {
+      clearInterval(countdownInterval);
+    }
+    
+    var nextEvent = getNextLastThursday();
+    var options = { month: 'short', day: 'numeric', year: 'numeric' };
+    var eventDateEl = containerEl.querySelector('#eventDate');
+    if (eventDateEl) {
+      eventDateEl.textContent = nextEvent.toLocaleDateString('en-US', options);
+    }
+    
+    updateCountdown();
+    countdownInterval = setInterval(updateCountdown, 1000);
+  }
+
+  function initEventBillboard() {
+    var video = containerEl.querySelector('.event-hero__video');
+    if (video) {
+      video.setAttribute('autoplay', '');
+      video.setAttribute('muted', '');
+      video.setAttribute('playsinline', '');
+      video.setAttribute('webkit-playsinline', '');
+      video.muted = true;
+      video.playsInline = true;
+      video.defaultMuted = true;
+      
+      var playAttempted = false;
+      var attemptPlay = function() {
+        if (playAttempted) return;
+        
+        if (video.readyState >= 2) {
+          playAttempted = true;
+          var playPromise = video.play();
+          if (playPromise !== undefined) {
+            playPromise.then(function() {
+              console.log('Video playing successfully');
+            }).catch(function(error) {
+              console.log('Video autoplay failed:', error);
+              playAttempted = false;
+              
+              var playOnInteraction = function() {
+                if (!playAttempted) {
+                  playAttempted = true;
+                  video.play().then(function() {
+                    console.log('Video started on user interaction');
+                  }).catch(function(e) {
+                    console.log('Manual play failed:', e);
+                    playAttempted = false;
+                  });
+                }
+              };
+              document.addEventListener('touchstart', playOnInteraction, { once: true });
+              document.addEventListener('click', playOnInteraction, { once: true });
+            });
+          }
+        }
+      };
+      
+      if (video.readyState >= 2) {
+        attemptPlay();
+      } else {
+        video.addEventListener('loadeddata', attemptPlay, { once: true });
+        video.addEventListener('canplay', attemptPlay, { once: true });
+      }
+      
+      video.addEventListener('error', function(e) {
+        var errorMsg = 'Unknown error';
+        if (video.error) {
+          switch(video.error.code) {
+            case 1: errorMsg = 'MEDIA_ERR_ABORTED'; break;
+            case 2: errorMsg = 'MEDIA_ERR_NETWORK'; break;
+            case 3: errorMsg = 'MEDIA_ERR_DECODE'; break;
+            case 4: errorMsg = 'MEDIA_ERR_SRC_NOT_SUPPORTED'; break;
+          }
+        }
+        console.error('Video error:', errorMsg, e);
+        
+        video.style.display = 'none';
+        var fallback = containerEl.querySelector('.event-events-hero__fallback');
+        if (fallback) {
+          fallback.style.opacity = '1';
+          fallback.style.animation = 'none';
+        }
+      });
+      
+      if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
+        video.load();
+      }
+    }
+    
+    if (!animationsPlayed) {
+      containerEl.classList.add('event-animations-started');
+      sessionStorage.setItem(STORAGE_KEY, 'true');
+      
+      setTimeout(function() {
+        var introLogo = containerEl.querySelector('.event-hero__intro-logo');
+        if (introLogo) {
+          introLogo.style.display = 'none';
+        }
+      }, 4000);
+      
+      setTimeout(function() {
+        containerEl.classList.add('event-animations-complete');
+        setTimeout(checkEventStatus, 500);
+      }, 6000);
+    } else {
+      containerEl.classList.add('event-animations-complete');
+      var introLogo = containerEl.querySelector('.event-hero__intro-logo');
+      if (introLogo) introLogo.style.display = 'none';
+      
+      var elements = containerEl.querySelectorAll('.event-title-glass, .event-brand, .event-countdown-glass, .event-hero__video, .event-hero__overlay, .event-hero__fallback');
+      elements.forEach(function(el) {
+        el.style.animation = 'none';
+        el.style.opacity = '1';
+        el.style.transform = 'none';
+      });
+      
+      setTimeout(checkEventStatus, 1000);
+    }
+    
+    initCountdown();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initEventBillboard);
+  } else {
+    initEventBillboard();
+  }
+
+  // EZ Billboard Dynamic Configuration Listener - by Derrick Yao (.8, dot-eight)
+  window.addEventListener('message', function(event) {
+    if (event.data.type === 'updateConfig') {
+      const config = event.data.config;
+      
+      // Update dynamic content
+      if (config.title) {
+        const titleEl = document.getElementById('dynamicEventTitle');
+        const infoTitleEl = document.getElementById('dynamicEventInfoTitle');
+        
+        if (titleEl) titleEl.textContent = config.title;
+        if (infoTitleEl) infoTitleEl.textContent = config.title.toUpperCase();
+      }
+      
+      if (config.subtitle) {
+        const subtitleEl = document.getElementById('dynamicEventSub');
+        const scheduleEl = document.getElementById('dynamicEventSchedule');
+        
+        if (subtitleEl) subtitleEl.textContent = config.subtitle;
+        if (scheduleEl) scheduleEl.textContent = config.subtitle;
+      }
+      
+      if (config.logo) {
+        const logoEl = document.getElementById('dynamicEventLogo');
+        const glassLogoEl = document.querySelector('.event-glass-logo img');
+        const introLogoEl = document.querySelector('.event-hero__intro-logo img');
+        const liveLogoEl = document.querySelector('.event-logo-transition img');
+        const liveLogo2El = document.querySelector('.event-live-logo img');
+        
+        if (logoEl) logoEl.src = config.logo;
+        if (glassLogoEl) glassLogoEl.src = config.logo;
+        if (introLogoEl) introLogoEl.src = config.logo;
+        if (liveLogoEl) liveLogoEl.src = config.logo;
+        if (liveLogo2El) liveLogo2El.src = config.logo;
+      }
+      
+      if (config.tag) {
+        const tagEl = document.getElementById('dynamicEventTag');
+        if (tagEl) tagEl.textContent = config.tag;
+      }
+      
+      if (config.description) {
+        const descEl = document.getElementById('dynamicEventDescription');
+        const locationEl = document.getElementById('dynamicEventLocation');
+        
+        if (descEl) descEl.textContent = config.description;
+        if (locationEl && config.title) {
+          locationEl.innerHTML = config.title + ' Venue<br>123 Main Street, Your City, State 12345';
+        }
+      }
+      
+      if (config.videoUrl) {
+        const videoEl = document.querySelector('.event-hero__video');
+        if (videoEl) {
+          videoEl.src = config.videoUrl;
+          videoEl.load(); // Reload video with new source
+        }
+      }
+      
+      if (config.accentColor) {
+        document.documentElement.style.setProperty('--event-accent', config.accentColor);
+      }
+      
+      if (config.backgroundColor) {
+        document.documentElement.style.setProperty('--event-bg-dark', config.backgroundColor);
+      }
+    }
+  });
+
+  // Hidden Watermark Protection System - DO NOT REMOVE
+  // License: CC BY-NC 4.0 - Creative Commons Attribution-NonCommercial 4.0
+  // Copyright (c) 2024 Derrick Yao (.8, dot-eight)
+  (function() {
+    'use strict';
+    
+    // Encrypted watermark data
+    const _0x4a8b = ['aHR0cHM6Ly9jZG4uNDA5Ni50ZWNoLy44LnBuZw==', 'hw-protection', 'createElement', 'img', 'src', 'style', 'position:absolute;top:-1px;left:-1px;width:1px;height:1px;opacity:0.01;z-index:-1;pointer-events:none;', 'appendChild', 'body'];
+    
+    function _0x2d4c(str) {
+      try {
+        return atob(str);
+      } catch(e) {
+        return '';
+      }
+    }
+    
+    function _0x1f3e() {
+      const container = document.getElementById(_0x4a8b[1]);
+      if (!container) return;
+      
+      const img = document[_0x4a8b[2]](_0x4a8b[3]);
+      img[_0x4a8b[4]] = _0x2d4c(_0x4a8b[0]);
+      img[_0x4a8b[5]] = _0x4a8b[6];
+      img.onload = function() { this.style.opacity = '0'; };
+      img.onerror = function() { this.remove(); };
+      
+      container[_0x4a8b[7]](img);
+      
+      // Additional protection layers
+      const canvas = document.createElement('canvas');
+      canvas.width = 1;
+      canvas.height = 1;
+      canvas.style.cssText = 'position:absolute;top:-2px;left:-2px;width:1px;height:1px;opacity:0;z-index:-2;';
+      const ctx = canvas.getContext('2d');
+      ctx.fillStyle = 'rgba(0,0,0,0.01)';
+      ctx.fillRect(0, 0, 1, 1);
+      container.appendChild(canvas);
+    }
+    
+    // License validation
+    function _0x5c7a() {
+      const licenseCheck = document.querySelector('meta[name="license"]');
+      if (!licenseCheck || !licenseCheck.content.includes('CC BY-NC 4.0')) {
+        console.warn('EZ Billboard: License validation required');
+      }
+    }
+    
+    // Initialize protection
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', function() {
+        setTimeout(_0x1f3e, 1000);
+        _0x5c7a();
+      });
+    } else {
+      setTimeout(_0x1f3e, 1000);
+      _0x5c7a();
+    }
+    
+    // Anti-tampering protection
+    const observer = new MutationObserver(function(mutations) {
+      mutations.forEach(function(mutation) {
+        if (mutation.type === 'childList') {
+          mutation.removedNodes.forEach(function(node) {
+            if (node.id === 'hw-protection' || (node.className && node.className.includes('ez-billboard-watermark'))) {
+              console.error('EZ Billboard: Watermark removal detected. License violation.');
+              setTimeout(_0x1f3e, 100);
+            }
+          });
+        }
+      });
+    });
+    
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true
+    });
+  })();
+})();
+</script>
+
+<!-- ===== SCOPED STYLES - EZ Billboard by Derrick Yao (.8, dot-eight) ===== -->
+<style>
+  /* EZ Billboard Event Template Styles - Created by Derrick Yao (.8, dot-eight) | yaomengy.com | https://github.com/derrickyau9 */
+  
+  /* HarmonyOS Sans SC 字体 - 支持中文显示 */
+  @font-face {
+    font-family: 'HarmonyOS Sans SC';
+    src: url('HarmonyOS_Sans_SC/HarmonyOS_Sans_SC_Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+  
+  @font-face {
+    font-family: 'HarmonyOS Sans SC';
+    src: url('HarmonyOS_Sans_SC/HarmonyOS_Sans_SC_Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+  }
+  
+  @font-face {
+    font-family: 'HarmonyOS Sans SC';
+    src: url('HarmonyOS_Sans_SC/HarmonyOS_Sans_SC_Bold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+  }
+  
+  @font-face {
+    font-family: 'HarmonyOS Sans SC';
+    src: url('HarmonyOS_Sans_SC/HarmonyOS_Sans_SC_Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+  }
+  
+  @font-face {
+    font-family: 'HarmonyOS Sans SC';
+    src: url('HarmonyOS_Sans_SC/HarmonyOS_Sans_SC_Black.ttf') format('truetype');
+    font-weight: 800;
+    font-style: normal;
+    font-display: swap;
+  }
+  
+  @font-face {
+    font-family: 'HarmonyOS Sans SC';
+    src: url('HarmonyOS_Sans_SC/HarmonyOS_Sans_SC_Black.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+  }
+  
+  /* Reset only for our container */
+  .event-billboard-container * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Container specific variables */
+  .event-billboard-container {
+    --event-bg-dark: #0b0b0c;
+    --event-text-light: #e9edf6;
+    --event-muted-light: #b7bcc7;
+    --event-accent: #c00001;
+    --event-radius: 16px;
+    --event-shadow: 0 12px 30px rgba(0,0,0,.35);
+    font-family: 'HarmonyOS Sans SC', "Montserrat", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.55;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .event-showcase {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+
+  /* ===== GLASS UTIL ===== */
+  .glass-effect {
+    position: relative;
+    background: rgba(20,20,22,.45);
+    -webkit-backdrop-filter: blur(16px) saturate(150%);
+    backdrop-filter: blur(16px) saturate(150%);
+    border-radius: 14px;
+    box-shadow: 0 12px 28px rgba(0,0,0,.32), inset 0 0 0 1px rgba(255,255,255,.08);
+    border: 1px solid rgba(255,255,255,.1);
+  }
+
+  /* Hero - Fixed 16:9 aspect ratio */
+  .event-hero {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    max-height: 90vh;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+    background: #000000;
+    color: var(--event-text-light);
+    border-radius: 8px;
+  }
+
+  /* Logo intro animation - centered */
+  .event-hero__intro-logo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 240px;
+    height: 240px;
+    z-index: 9999;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+  }
+  
+  /* Show and apply animation only when animations are started */
+  .event-animations-started .event-events-hero__intro-logo {
+    opacity: 1;
+    animation: eventLogoIntro3D 3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+
+  .event-hero__intro-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: brightness(1.3) drop-shadow(0 0 40px rgba(200,0,1,0.5));
+  }
+  
+  /* 3D fade-in animation */
+  @keyframes eventLogoIntro3D {
+    0% {
+      opacity: 0;
+      transform: translate(-50%, -50%) perspective(800px) rotateY(-90deg) scale(0.5);
+    }
+    40% {
+      opacity: 1;
+      transform: translate(-50%, -50%) perspective(800px) rotateY(0deg) scale(1.3);
+    }
+    70% {
+      opacity: 1;
+      transform: translate(-50%, -50%) perspective(800px) rotateY(0deg) scale(1);
+    }
+    100% {
+      opacity: 0;
+      transform: translate(-50%, -50%) perspective(800px) rotateY(0deg) scale(0.9);
+    }
+  }
+  
+  /* Fallback logo in corner */
+  .event-hero__fallback {
+    position: absolute;
+    bottom: 25px;
+    right: 25px;
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    z-index: 5;
+    opacity: 0;
+    animation: eventFadeInCorner 1s ease-out 5s forwards;
+  }
+  
+  @keyframes eventFadeInCorner {
+    to {
+      opacity: 0.7;
+    }
+  }
+
+  /* Video background - fills container */
+  .event-hero__video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    z-index: 1;
+    opacity: 0;
+    animation: eventVideoFadeIn 2s ease-out 4s forwards;
+    display: block;
+    transition: opacity 2s ease-out;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    will-change: opacity;
+  }
+  
+  .event-hero__video::-webkit-media-controls-start-playback-button {
+    display: none !important;
+    -webkit-appearance: none;
+  }
+  
+  @keyframes eventVideoFadeIn {
+    to {
+      opacity: 1;
+    }
+  }
+
+  .event-hero__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(0,0,0,.2) 0%, rgba(0,0,0,.5) 100%);
+    opacity: 0;
+    z-index: 3;
+    animation: eventOverlayFadeIn 1.5s ease-out 4s forwards;
+    pointer-events: none;
+  }
+  
+  @keyframes eventOverlayFadeIn {
+    to {
+      opacity: 1;
+    }
+  }
+
+  /* Brand glass chip - top left */
+  .event-brand {
+    position: absolute;
+    top: 24px;
+    left: 24px;
+    z-index: 6;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 14px;
+    opacity: 0;
+    transform: translateX(-20px);
+    animation: eventBrandFadeIn 0.8s ease-out 2.5s forwards;
+  }
+  
+  @keyframes eventBrandFadeIn {
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  .event-brand img {
+    height: 42px;
+    width: auto;
+    object-fit: contain;
+  }
+
+  .event-la-tag {
+    font-weight: 700;
+    letter-spacing: .3px;
+    font-size: 14px;
+  }
+
+  .event-la-dot {
+    opacity: .45;
+  }
+
+  /* Title glass block - BOTTOM LEFT */
+  .event-title-glass {
+    position: absolute;
+    bottom: 40px;
+    left: 40px;
+    z-index: 6;
+    padding: 20px 24px;
+    max-width: 520px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: eventGlassFadeIn 1s ease-out 2.5s forwards;
+  }
+  
+  @keyframes eventGlassFadeIn {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .event-glass-logo {
+    flex-shrink: 0;
+  }
+
+  .event-glass-logo img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    filter: brightness(1.1);
+  }
+
+  .event-glass-content {
+    flex: 1;
+  }
+
+  .event-glass-title {
+    font-weight: 800;
+    font-size: clamp(24px, 4vw, 32px);
+    margin: 0 0 4px 0;
+    color: var(--event-text-light);
+    line-height: 1.1;
+  }
+
+  .event-sub {
+    margin: 0;
+    color: var(--event-muted-light);
+    font-size: clamp(13px, 2vw, 16px);
+    font-weight: 500;
+  }
+
+  /* Countdown Timer Glass - TOP RIGHT */
+  .event-countdown-glass {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    z-index: 100;
+    padding: 20px 24px;
+    opacity: 0;
+    transform: translateY(-30px);
+    animation: eventCountdownFadeIn 1s ease-out 3s forwards;
+    transition: all 0.3s ease;
+  }
+
+  @keyframes eventCountdownFadeIn {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Event Active State */
+  .event-countdown-glass.event-event-active {
+    background: rgba(200, 0, 1, 0.2);
+    border-color: rgba(200, 0, 1, 0.4);
+    animation: eventEventPulse 2s ease-in-out infinite;
+  }
+
+  @keyframes eventEventPulse {
+    0%, 100% { 
+      box-shadow: 0 12px 28px rgba(0,0,0,.32), 
+                 inset 0 0 0 1px rgba(255,255,255,.08),
+                 0 0 30px rgba(200,0,1,0.3);
+    }
+    50% { 
+      box-shadow: 0 12px 28px rgba(0,0,0,.32), 
+                 inset 0 0 0 1px rgba(255,255,255,.08),
+                 0 0 50px rgba(200,0,1,0.5);
+    }
+  }
+
+  .event-event-live {
+    color: #ff3333;
+    animation: eventLiveFlash 1.5s ease-in-out infinite;
+  }
+
+  @keyframes eventLiveFlash {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+  }
+
+  .event-event-live-message {
+    text-align: center;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--event-text-light);
+    line-height: 1.4;
+  }
+
+  .event-event-time {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--event-muted-light);
+    display: block;
+    margin-top: 4px;
+  }
+
+  .event-countdown-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .event-countdown-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--event-muted-light);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .event-countdown-date {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--event-accent);
+  }
+
+  .event-countdown-timer {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .event-countdown-unit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 50px;
+  }
+
+  .event-countdown-value {
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--event-text-light);
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .event-countdown-unit-label {
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--event-muted-light);
+    text-transform: uppercase;
+    margin-top: 4px;
+    letter-spacing: 0.5px;
+  }
+
+  .event-countdown-separator {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--event-muted-light);
+    opacity: 0.6;
+    animation: eventPulse 1s ease-in-out infinite;
+  }
+
+  @keyframes eventPulse {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 0.2; }
+  }
+
+  /* Event Live Logos */
+  .event-event-live-logos {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.9);
+    pointer-events: none;
+  }
+
+  .event-logo-transition {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: all 2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .event-logo-transition img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: brightness(1.2) drop-shadow(0 0 30px rgba(255, 255, 255, 0.3));
+  }
+
+  .event-live-logo {
+    position: absolute;
+    width: 350px;
+    height: 350px;
+    opacity: 0;
+    transform: scale(0.5) rotateY(-180deg);
+    transition: all 2s cubic-bezier(0.4, 0, 0.2, 1) 2s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .event-live-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: brightness(1.3) drop-shadow(0 0 40px rgba(200, 0, 1, 0.6));
+  }
+
+  .event-live-indicator {
+    position: absolute;
+    bottom: -40px;
+    font-size: 24px;
+    font-weight: 800;
+    color: #ff3333;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    animation: eventLivePulse 2s ease-in-out infinite;
+    text-shadow: 0 0 20px rgba(255, 51, 51, 0.8);
+  }
+
+  @keyframes eventLivePulse {
+    0%, 100% { 
+      opacity: 1;
+      transform: scale(1);
+    }
+    50% { 
+      opacity: 0.8;
+      transform: scale(1.05);
+    }
+  }
+
+  /* Active state animations */
+  .event-event-live-logos.event-active .event-logo-transition {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .event-event-live-logos.event-active .event-openmic-logo-live {
+    opacity: 1;
+    transform: scale(1) rotateY(0);
+  }
+
+  .event-event-live-logos.event-active .event-logo-transition {
+    animation: eventFadeOutLogo 1s ease-out 3s forwards;
+  }
+
+  @keyframes eventFadeOutLogo {
+    to {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+  }
+
+  /* Event is live body class effects */
+  .event-billboard-container.event-event-is-live .event-events-hero__overlay {
+    background: linear-gradient(180deg, rgba(200, 0, 1, 0.1) 0%, rgba(0, 0, 0, 0.8) 100%);
+    transition: background 2s ease;
+  }
+
+  /* ===== EVENT INFO SECTION ===== */
+  .event-event-info {
+    padding: 40px 20px;
+    background: #0b0b0c;
+    color: var(--event-text-light);
+  }
+
+  .event-event-info__container {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .event-event-info__header {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  .event-event-info__title {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--event-text-light);
+    margin-bottom: 12px;
+    letter-spacing: 0.5px;
+  }
+
+  .event-event-info__schedule {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--event-accent);
+    margin-bottom: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+
+  .event-event-info__location {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--event-muted-light);
+    line-height: 1.5;
+  }
+
+  .event-event-info__content {
+    text-align: center;
+  }
+
+  .event-event-info__description {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--event-text-light);
+    margin-bottom: 30px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .event-event-info__image {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    margin: 0 auto 30px;
+    display: block;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+  }
+
+  .event-event-info__details {
+    background: rgba(20,20,22,.3);
+    border-radius: 12px;
+    padding: 24px;
+    max-width: 500px;
+    margin: 0 auto;
+    border: 1px solid rgba(255,255,255,.08);
+  }
+
+  .event-event-info__signup {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--event-accent);
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .event-event-info__timing {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--event-muted-light);
+    line-height: 1.6;
+  }
+
+  /* Ensure animations complete and stay */
+  .event-billboard-container.event-animations-complete .event-events-title-glass,
+  .event-billboard-container.event-animations-complete .event-events-brand,
+  .event-billboard-container.event-animations-complete .event-countdown-glass,
+  .event-billboard-container.event-animations-complete .event-events-hero__overlay,
+  .event-billboard-container.event-animations-complete .event-events-hero__fallback,
+  .event-billboard-container.event-animations-complete .event-events-hero__video {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* Tablet responsive */
+  @media (max-width: 1024px) {
+    .event-hero {
+      aspect-ratio: 16 / 9;
+      max-height: 70vh;
+    }
+    
+    .event-countdown-glass {
+      top: 70px;
+      right: 20px;
+      padding: 16px 20px;
+    }
+    
+    .event-title-glass {
+      bottom: 30px;
+      left: 30px;
+      max-width: 450px;
+      padding: 18px 22px;
+    }
+    
+    .event-glass-logo img {
+      width: 70px;
+      height: 70px;
+    }
+
+    /* Event info adjustments for tablet */
+    .event-event-info {
+      padding: 35px 20px;
+    }
+
+    .event-event-info__title {
+      font-size: 26px;
+    }
+
+    .event-event-info__schedule {
+      font-size: 17px;
+    }
+
+    .event-event-info__location {
+      font-size: 15px;
+    }
+
+    .event-event-info__description {
+      font-size: 15px;
+    }
+  }
+
+  /* Mobile responsive - maintaining 16:9 */
+  @media (max-width: 768px) {
+    .event-hero {
+      aspect-ratio: 16 / 9;
+      max-height: none;
+      border-radius: 6px;
+    }
+    
+    .event-brand {
+      top: 12px;
+      left: 12px;
+      padding: 6px 10px;
+    }
+
+    .event-brand img {
+      height: 34px;
+    }
+
+    .event-la-tag {
+      font-size: 12px;
+    }
+
+    .event-title-glass {
+      bottom: 20px;
+      left: 16px;
+      right: 16px;
+      max-width: none;
+      padding: 14px 16px;
+      gap: 14px;
+    }
+
+    .event-glass-logo img {
+      width: 50px;
+      height: 50px;
+    }
+
+    .event-glass-title {
+      font-size: clamp(18px, 5vw, 24px);
+    }
+
+    .event-sub {
+      font-size: clamp(11px, 2.5vw, 14px);
+    }
+
+    .event-hero__fallback {
+      width: 60px;
+      height: 60px;
+      bottom: 16px;
+      right: 16px;
+    }
+
+    .event-hero__intro-logo {
+      width: 160px;
+      height: 160px;
+    }
+
+    /* Hide countdown on mobile */
+    .event-countdown-glass {
+      display: none !important;
+    }
+    
+    .event-event-live-message {
+      font-size: 16px;
+    }
+    
+    .event-logo-transition,
+    .event-live-logo {
+      width: 200px;
+      height: 200px;
+    }
+    
+    .event-live-indicator {
+      font-size: 18px;
+      bottom: -30px;
+    }
+
+    /* Event info mobile styles */
+    .event-event-info {
+      padding: 30px 16px;
+    }
+
+    .event-event-info__title {
+      font-size: 22px;
+    }
+
+    .event-event-info__schedule {
+      font-size: 15px;
+    }
+
+    .event-event-info__location {
+      font-size: 14px;
+    }
+
+    .event-event-info__description {
+      font-size: 14px;
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+
+    .event-event-info__image {
+      margin-bottom: 24px;
+    }
+
+    .event-event-info__details {
+      padding: 20px;
+    }
+
+    .event-event-info__signup {
+      font-size: 18px;
+    }
+
+    .event-event-info__timing {
+      font-size: 14px;
+    }
+  }
+  
+  /* Small mobile */
+  @media (max-width: 480px) {
+    .event-hero {
+      aspect-ratio: 16 / 9;
+      max-height: none;
+    }
+    
+    .event-brand {
+      top: 10px;
+      left: 10px;
+      padding: 5px 8px;
+    }
+    
+    .event-brand img {
+      height: 30px;
+    }
+    
+    .event-la-tag {
+      font-size: 10px;
+    }
+    
+    .event-title-glass {
+      bottom: 16px;
+      left: 12px;
+      right: 12px;
+      padding: 12px 14px;
+      gap: 12px;
+    }
+
+    .event-glass-logo img {
+      width: 40px;
+      height: 40px;
+    }
+
+    .event-glass-title {
+      font-size: clamp(16px, 5vw, 20px);
+    }
+
+    .event-sub {
+      font-size: clamp(10px, 2.5vw, 12px);
+    }
+
+    .event-hero__fallback {
+      display: none;
+    }
+    
+    .event-event-live-message {
+      font-size: 14px;
+    }
+    
+    .event-event-time {
+      font-size: 11px;
+    }
+    
+    .event-logo-transition,
+    .event-live-logo {
+      width: 150px;
+      height: 150px;
+    }
+    
+    .event-live-indicator {
+      font-size: 14px;
+      bottom: -25px;
+    }
+
+    /* Event info small mobile */
+    .event-event-info {
+      padding: 24px 12px;
+    }
+
+    .event-event-info__title {
+      font-size: 20px;
+    }
+
+    .event-event-info__schedule {
+      font-size: 14px;
+      margin-bottom: 12px;
+    }
+
+    .event-event-info__location {
+      font-size: 13px;
+    }
+
+    .event-event-info__description {
+      font-size: 13px;
+      margin-bottom: 20px;
+    }
+
+    .event-event-info__details {
+      padding: 16px;
+    }
+
+    .event-event-info__signup {
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+
+    .event-event-info__timing {
+      font-size: 13px;
+    }
+  }
+  
+  /* Extra small screens */
+  @media (max-width: 380px) {
+    .event-logo-transition,
+    .event-live-logo {
+      width: 140px;
+      height: 140px;
+    }
+    
+    .event-live-indicator {
+      font-size: 13px;
+      bottom: -20px;
+    }
+
+    /* Event info extra small */
+    .event-event-info__title {
+      font-size: 18px;
+    }
+
+    .event-event-info__schedule {
+      font-size: 13px;
+    }
+
+    .event-event-info__location {
+      font-size: 12px;
+    }
+
+    .event-event-info__description {
+      font-size: 12px;
+    }
+
+    .event-event-info__signup {
+      font-size: 15px;
+    }
+
+    .event-event-info__timing {
+      font-size: 12px;
+    }
+  }
+
+  /* EZ Billboard Watermark Styles - by Derrick Yao (.8, dot-eight) */
+  .ez-billboard-watermark {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    background: rgba(0,0,0,0.8);
+    color: rgba(255,255,255,0.9);
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 500;
+    z-index: 9999;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.1);
+    transition: all 0.3s ease;
+  }
+
+  .ez-billboard-watermark:hover {
+    background: rgba(0,0,0,0.95);
+    color: rgba(255,255,255,1);
+  }
+
+  .ez-billboard-watermark a {
+    color: var(--event-accent, #c00001);
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .ez-billboard-watermark a:hover {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 768px) {
+    .ez-billboard-watermark {
+      font-size: 10px;
+      padding: 6px 8px;
+      bottom: 5px;
+      right: 5px;
+    }
+  }
+</style>
+
+</body>
+</html>

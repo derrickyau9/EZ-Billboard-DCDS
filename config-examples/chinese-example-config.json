@@ -1,0 +1,11 @@
+{
+  "template": "brand",
+  "title": "佐伊公寓",
+  "subtitle": "高端生活空间与品质生活",
+  "logo": "Zoey's Apt logo.png",
+  "tag": "精品公寓",
+  "description": "佐伊公寓致力于提供卓越的公寓生活体验，配备现代化设施、优越地理位置和无与伦比的服务，为高端住宅体验树立新标准。我们的每一处细节都体现着对品质生活的追求。",
+  "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+  "accentColor": "#dc2626",
+  "backgroundColor": "#fafafa"
+}

@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EZ Billboard - Dynamic Content Display | by Derrick Yao</title>
+  <meta name="description" content="Easy-to-deploy billboard application with dynamic content switching - Created by Derrick Yao">
+  <meta name="author" content="Derrick Yao - yaomengy.com">
+  <meta name="license" content="CC BY-NC 4.0 - Creative Commons Attribution-NonCommercial 4.0 International">
+  <meta name="copyright" content="Copyright (c) 2024 Derrick Yao (.8, dot-eight)">
+  <link rel="canonical" href="https://yaomengy.com">
+  
+  <!-- Watermark: .8, dot-eight | Created by Derrick Yao | yaomengy.com | https://github.com/derrickyau9 -->
+  
+  <style>
+    /* EZ Billboard Configuration Interface - by Derrick Yao (.8, dot-eight) */
+    
+    /* HarmonyOS Sans SC 字体 - 支持中文显示 */
+    @font-face {
+      font-family: 'HarmonyOS Sans SC';
+      src: url('HarmonyOS_Sans_SC/HarmonyOS_Sans_SC_Regular.ttf') format('truetype');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+    
+    @font-face {
+      font-family: 'HarmonyOS Sans SC';
+      src: url('HarmonyOS_Sans_SC/HarmonyOS_Sans_SC_Medium.ttf') format('truetype');
+      font-weight: 500;
+      font-style: normal;
+      font-display: swap;
+    }
+    
+    @font-face {
+      font-family: 'HarmonyOS Sans SC';
+      src: url('HarmonyOS_Sans_SC/HarmonyOS_Sans_SC_Bold.ttf') format('truetype');
+      font-weight: 600;
+      font-style: normal;
+      font-display: swap;
+    }
+    
+    @font-face {
+      font-family: 'HarmonyOS Sans SC';
+      src: url('HarmonyOS_Sans_SC/HarmonyOS_Sans_SC_Bold.ttf') format('truetype');
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
+    }
+    
+    @font-face {
+      font-family: 'HarmonyOS Sans SC';
+      src: url('HarmonyOS_Sans_SC/HarmonyOS_Sans_SC_Black.ttf') format('truetype');
+      font-weight: 800;
+      font-style: normal;
+      font-display: swap;
+    }
+    
+    @font-face {
+      font-family: 'HarmonyOS Sans SC';
+      src: url('HarmonyOS_Sans_SC/HarmonyOS_Sans_SC_Black.ttf') format('truetype');
+      font-weight: 900;
+      font-style: normal;
+      font-display: swap;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'HarmonyOS Sans SC', 'Inter', system-ui, -apple-system, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      color: #333;
+    }
+
+    .config-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 40px;
+      color: white;
+    }
+
+    .header h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      margin-bottom: 10px;
+      text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    }
+
+    .header .subtitle {
+      font-size: 1.2rem;
+      opacity: 0.9;
+      margin-bottom: 5px;
+    }
+
+    .watermark {
+      font-size: 0.9rem;
+      opacity: 0.7;
+      font-style: italic;
+    }
+
+    .config-panel {
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(20px);
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+      margin-bottom: 30px;
+    }
+
+    .config-section {
+      margin-bottom: 30px;
+    }
+
+    .config-section h3 {
+      font-size: 1.4rem;
+      margin-bottom: 15px;
+      color: #4a5568;
+      border-bottom: 2px solid #e2e8f0;
+      padding-bottom: 8px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: #2d3748;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 12px 16px;
+      border: 2px solid #e2e8f0;
+      border-radius: 8px;
+      font-size: 14px;
+      transition: all 0.3s ease;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: #667eea;
+      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .btn {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-right: 10px;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+    }
+
+    .btn-secondary {
+      background: #718096;
+    }
+
+    .btn-secondary:hover {
+      background: #4a5568;
+    }
+
+    .preview-container {
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(20px);
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+    }
+
+    .preview-frame {
+      width: 100%;
+      height: 600px;
+      border: none;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+
+    .template-selector {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+
+    .template-option {
+      flex: 1;
+      padding: 15px;
+      border: 2px solid #e2e8f0;
+      border-radius: 12px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      background: white;
+    }
+
+    .template-option:hover {
+      border-color: #667eea;
+      transform: translateY(-2px);
+    }
+
+    .template-option.active {
+      border-color: #667eea;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+    }
+
+    .video-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 15px;
+      margin-top: 15px;
+    }
+
+    .video-item {
+      padding: 15px;
+      border: 2px solid #e2e8f0;
+      border-radius: 8px;
+      background: #f7fafc;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .video-item:hover {
+      border-color: #667eea;
+      background: #edf2f7;
+    }
+
+    .video-item.active {
+      border-color: #667eea;
+      background: #e6fffa;
+    }
+
+    .footer-watermark {
+      text-align: center;
+      margin-top: 40px;
+      color: rgba(255,255,255,0.8);
+      font-size: 0.9rem;
+    }
+
+    .footer-watermark a {
+      color: rgba(255,255,255,0.9);
+      text-decoration: none;
+    }
+
+    .footer-watermark a:hover {
+      text-decoration: underline;
+    }
+
+    /* Config Management Styles */
+    .config-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .config-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .live-sync-toggle {
+      display: flex;
+      align-items: center;
+      padding: 15px;
+      background: rgba(102, 126, 234, 0.1);
+      border-radius: 8px;
+      border: 1px solid rgba(102, 126, 234, 0.2);
+    }
+
+    .toggle-switch {
+      position: relative;
+      display: inline-block;
+      width: 50px;
+      height: 24px;
+      margin-right: 10px;
+    }
+
+    .toggle-switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .toggle-slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      transition: .4s;
+      border-radius: 24px;
+    }
+
+    .toggle-slider:before {
+      position: absolute;
+      content: "";
+      height: 18px;
+      width: 18px;
+      left: 3px;
+      bottom: 3px;
+      background-color: white;
+      transition: .4s;
+      border-radius: 50%;
+    }
+
+    input:checked + .toggle-slider {
+      background-color: #667eea;
+    }
+
+    input:checked + .toggle-slider:before {
+      transform: translateX(26px);
+    }
+
+    .toggle-label {
+      font-weight: 600;
+      color: #4a5568;
+    }
+
+    .config-status {
+      padding: 10px 15px;
+      border-radius: 6px;
+      margin-top: 10px;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .config-status.success {
+      background: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+    }
+
+    .config-status.error {
+      background: #f8d7da;
+      color: #721c24;
+      border: 1px solid #f5c6cb;
+    }
+
+    .config-status.info {
+      background: #d1ecf1;
+      color: #0c5460;
+      border: 1px solid #bee5eb;
+    }
+
+    .preset-configs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .preset-configs .btn {
+      font-size: 12px;
+      padding: 8px 12px;
+    }
+
+    @media (max-width: 768px) {
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+      
+      .template-selector {
+        flex-direction: column;
+      }
+      
+      .header h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- EZ Billboard by Derrick Yao (.8, dot-eight) - yaomengy.com - https://github.com/derrickyau9 -->
+  
+  <div class="config-container">
+    <div class="header">
+      <h1>EZ Billboard</h1>
+      <div class="subtitle">Dynamic Content Display System</div>
+      <div class="watermark">Created by Derrick Yao (.8, dot-eight) | <a href="https://yaomengy.com" target="_blank">yaomengy.com</a> | <a href="https://github.com/derrickyau9" target="_blank">GitHub</a></div>
+    </div>
+
+    <div class="config-panel">
+      <div class="config-section">
+        <h3>Template Selection</h3>
+        <div class="template-selector">
+          <div class="template-option active" data-template="brand">
+            <h4>Brand Showcase</h4>
+            <p>Perfect for product launches, brand presentations</p>
+          </div>
+          <div class="template-option" data-template="event">
+            <h4>Event Billboard</h4>
+            <p>Ideal for live events, countdown timers</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="config-section">
+        <h3>Content Configuration</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="brandTitle">Main Title</label>
+            <input type="text" id="brandTitle" placeholder="Your Brand Name" value="Zoey's Apt">
+          </div>
+          <div class="form-group">
+            <label for="brandSubtitle">Subtitle</label>
+            <input type="text" id="brandSubtitle" placeholder="Tagline or description" value="Premium Living Spaces & Lifestyle">
+          </div>
+        </div>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label for="brandLogo">Logo URL</label>
+            <input type="url" id="brandLogo" placeholder="https://example.com/logo.png" value="Zoey's Apt logo.png">
+          </div>
+          <div class="form-group">
+            <label for="brandTag">Brand Tag</label>
+            <input type="text" id="brandTag" placeholder="Premium Apartments" value="Premium Apartments">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="brandDescription">Description</label>
+          <textarea id="brandDescription" placeholder="Describe your brand or event...">Zoey's Apt offers exceptional apartment living with modern amenities, prime locations, and unmatched service that sets the standard for luxury residential experiences.</textarea>
+        </div>
+      </div>
+
+      <div class="config-section">
+        <h3>Video Configuration</h3>
+        <div class="form-group">
+          <label for="videoUrl">Video URL</label>
+          <input type="url" id="videoUrl" placeholder="https://example.com/video.mp4" value="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4">
+        </div>
+        
+        <div class="form-group">
+          <label>Preset Videos</label>
+          <div class="video-list">
+            <div class="video-item active" data-video="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" data-title="Big Buck Bunny" data-subtitle="Animated Short Film">
+              <h5>Big Buck Bunny</h5>
+              <p>Animated Short Film</p>
+            </div>
+            <div class="video-item" data-video="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4" data-title="Elephants Dream" data-subtitle="Creative Animation">
+              <h5>Elephants Dream</h5>
+              <p>Creative Animation</p>
+            </div>
+            <div class="video-item" data-video="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" data-title="For Bigger Blazes" data-subtitle="Action Adventure">
+              <h5>For Bigger Blazes</h5>
+              <p>Action Adventure</p>
+            </div>
+            <div class="video-item" data-video="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4" data-title="Sintel" data-subtitle="Fantasy Animation">
+              <h5>Sintel</h5>
+              <p>Fantasy Animation</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="config-section">
+        <h3>Color Customization</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="accentColor">Accent Color</label>
+            <input type="color" id="accentColor" value="#dc2626">
+          </div>
+          <div class="form-group">
+            <label for="backgroundColor">Background Color</label>
+            <input type="color" id="backgroundColor" value="#fafafa">
+          </div>
+        </div>
+      </div>
+
+      <div class="config-section">
+        <h3>Configuration Management</h3>
+        <div class="config-actions">
+          <div class="form-group">
+            <label for="configFile">Load Configuration File</label>
+            <input type="file" id="configFile" accept=".json" onchange="loadConfig(event)">
+            <small style="color: #718096; margin-top: 5px; display: block;">Select a .json config file to load settings</small>
+          </div>
+          
+          <div class="form-group">
+            <label>Quick Load Presets</label>
+            <div class="preset-configs">
+              <button class="btn btn-secondary" onclick="loadPresetConfig('zoeys-apt')">Zoey's Apt</button>
+              <button class="btn btn-secondary" onclick="loadPresetConfig('chinese')">中文示例</button>
+              <button class="btn btn-secondary" onclick="loadPresetConfig('brand')">Brand Template</button>
+              <button class="btn btn-secondary" onclick="loadPresetConfig('event')">Event Template</button>
+            </div>
+            <small style="color: #718096; margin-top: 5px; display: block;">Load pre-configured examples</small>
+          </div>
+          
+          <div class="config-buttons">
+            <button class="btn" onclick="updatePreview()">Update Preview</button>
+            <button class="btn btn-secondary" onclick="exportConfig()">Export Configuration</button>
+            <button class="btn btn-secondary" onclick="downloadHTML()">Download HTML</button>
+            <button class="btn btn-secondary" onclick="resetConfig()">Reset to Default</button>
+          </div>
+          
+          <div class="live-sync-toggle">
+            <label class="toggle-switch">
+              <input type="checkbox" id="liveSyncToggle" checked onchange="toggleLiveSync()">
+              <span class="toggle-slider"></span>
+              <span class="toggle-label">Live Preview Sync</span>
+            </label>
+            <small style="color: #718096; margin-left: 10px;">Automatically update preview as you type</small>
+          </div>
+          
+          <div id="configStatus" class="config-status" style="display: none;"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="preview-container">
+      <h3 style="margin-bottom: 20px; color: #4a5568;">Live Preview</h3>
+      <iframe id="previewFrame" class="preview-frame" src="brand.html"></iframe>
+    </div>
+
+    <div class="footer-watermark">
+      <!-- Watermark: .8, dot-eight -->
+      <p>EZ Billboard System | Created by <a href="https://yaomengy.com" target="_blank">Derrick Yao</a> (.8, dot-eight) | 
+      <a href="https://github.com/derrickyau9" target="_blank">GitHub</a> | 
+      Open Source Billboard Solution</p>
+    </div>
+  </div>
+
+  <script>
+    // EZ Billboard Configuration System
+    // Created by Derrick Yao (.8, dot-eight) - yaomengy.com - https://github.com/derrickyau9
+    
+    let currentTemplate = 'brand';
+    let liveSyncEnabled = true;
+    let liveSyncTimeout = null;
+    
+    let currentConfig = {
+      template: 'brand',
+      title: 'Zoey\'s Apt',
+      subtitle: 'Premium Living Spaces & Lifestyle',
+      logo: 'Zoey\'s Apt logo.png',
+      tag: 'Premium Apartments',
+      description: 'Zoey\'s Apt offers exceptional apartment living with modern amenities, prime locations, and unmatched service that sets the standard for luxury residential experiences.',
+      videoUrl: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
+      accentColor: '#dc2626',
+      backgroundColor: '#fafafa'
+    };
+
+    // Default config for reset functionality
+    const defaultConfig = { ...currentConfig };
+
+    // Template switching
+    document.querySelectorAll('.template-option').forEach(option => {
+      option.addEventListener('click', function() {
+        document.querySelectorAll('.template-option').forEach(opt => opt.classList.remove('active'));
+        this.classList.add('active');
+        currentTemplate = this.dataset.template;
+        currentConfig.template = currentTemplate;
+        
+        // Switch preview iframe
+        document.getElementById('previewFrame').src = currentTemplate + '.html';
+        
+        // Update form for template-specific content
+        if (currentTemplate === 'event') {
+          document.getElementById('brandTitle').placeholder = 'Event Name';
+          document.getElementById('brandSubtitle').placeholder = 'Event Schedule';
+          document.getElementById('brandTag').placeholder = 'Live Events';
+          document.getElementById('brandDescription').placeholder = 'Describe your event...';
+        } else {
+          document.getElementById('brandTitle').placeholder = 'Your Brand Name';
+          document.getElementById('brandSubtitle').placeholder = 'Tagline or description';
+          document.getElementById('brandTag').placeholder = 'Premium Showcase';
+          document.getElementById('brandDescription').placeholder = 'Describe your brand...';
+        }
+      });
+    });
+
+    // Video selection
+    document.querySelectorAll('.video-item').forEach(item => {
+      item.addEventListener('click', function() {
+        document.querySelectorAll('.video-item').forEach(vid => vid.classList.remove('active'));
+        this.classList.add('active');
+        
+        const videoUrl = this.dataset.video;
+        const title = this.dataset.title;
+        const subtitle = this.dataset.subtitle;
+        
+        document.getElementById('videoUrl').value = videoUrl;
+        document.getElementById('brandTitle').value = title;
+        document.getElementById('brandSubtitle').value = subtitle;
+        
+        currentConfig.videoUrl = videoUrl;
+        currentConfig.title = title;
+        currentConfig.subtitle = subtitle;
+        
+        updatePreview();
+      });
+    });
+
+    // Status display functions
+    function showStatus(message, type = 'info', duration = 3000) {
+      const statusEl = document.getElementById('configStatus');
+      statusEl.textContent = message;
+      statusEl.className = `config-status ${type}`;
+      statusEl.style.display = 'block';
+      
+      if (duration > 0) {
+        setTimeout(() => {
+          statusEl.style.display = 'none';
+        }, duration);
+      }
+    }
+
+    // Live sync function
+    function triggerLiveSync() {
+      if (!liveSyncEnabled) return;
+      
+      if (liveSyncTimeout) {
+        clearTimeout(liveSyncTimeout);
+      }
+      
+      liveSyncTimeout = setTimeout(() => {
+        updatePreview();
+      }, 500); // 500ms delay to avoid too frequent updates
+    }
+
+    // Form input listeners with live sync
+    document.getElementById('brandTitle').addEventListener('input', function() {
+      currentConfig.title = this.value;
+      triggerLiveSync();
+    });
+
+    document.getElementById('brandSubtitle').addEventListener('input', function() {
+      currentConfig.subtitle = this.value;
+      triggerLiveSync();
+    });
+
+    document.getElementById('brandLogo').addEventListener('input', function() {
+      currentConfig.logo = this.value;
+      triggerLiveSync();
+    });
+
+    document.getElementById('brandTag').addEventListener('input', function() {
+      currentConfig.tag = this.value;
+      triggerLiveSync();
+    });
+
+    document.getElementById('brandDescription').addEventListener('input', function() {
+      currentConfig.description = this.value;
+      triggerLiveSync();
+    });
+
+    document.getElementById('videoUrl').addEventListener('input', function() {
+      currentConfig.videoUrl = this.value;
+      triggerLiveSync();
+    });
+
+    document.getElementById('accentColor').addEventListener('input', function() {
+      currentConfig.accentColor = this.value;
+      triggerLiveSync();
+    });
+
+    document.getElementById('backgroundColor').addEventListener('input', function() {
+      currentConfig.backgroundColor = this.value;
+      triggerLiveSync();
+    });
+
+    function updatePreview() {
+      // Send configuration to iframe
+      const iframe = document.getElementById('previewFrame');
+      iframe.contentWindow.postMessage({
+        type: 'updateConfig',
+        config: currentConfig
+      }, '*');
+    }
+
+    // Config loading function
+    function loadConfig(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      if (file.type !== 'application/json') {
+        showStatus('Please select a valid JSON file', 'error');
+        return;
+      }
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        try {
+          const loadedConfig = JSON.parse(e.target.result);
+          
+          // Validate config structure
+          if (!loadedConfig.title || !loadedConfig.template) {
+            throw new Error('Invalid configuration format');
+          }
+
+          // Update current config
+          currentConfig = { ...currentConfig, ...loadedConfig };
+          
+          // Update form fields
+          updateFormFields();
+          
+          // Switch template if needed
+          if (loadedConfig.template !== currentTemplate) {
+            currentTemplate = loadedConfig.template;
+            document.querySelectorAll('.template-option').forEach(opt => opt.classList.remove('active'));
+            document.querySelector(`[data-template="${currentTemplate}"]`).classList.add('active');
+            document.getElementById('previewFrame').src = currentTemplate + '.html';
+          }
+          
+          // Update preview
+          setTimeout(() => {
+            updatePreview();
+          }, 500);
+          
+          showStatus(`Configuration loaded successfully: ${loadedConfig.title}`, 'success');
+          
+        } catch (error) {
+          console.error('Config loading error:', error);
+          showStatus('Error loading configuration file. Please check the file format.', 'error');
+        }
+      };
+      
+      reader.readAsText(file);
+    }
+
+    // Update form fields with current config
+    function updateFormFields() {
+      document.getElementById('brandTitle').value = currentConfig.title || '';
+      document.getElementById('brandSubtitle').value = currentConfig.subtitle || '';
+      document.getElementById('brandLogo').value = currentConfig.logo || '';
+      document.getElementById('brandTag').value = currentConfig.tag || '';
+      document.getElementById('brandDescription').value = currentConfig.description || '';
+      document.getElementById('videoUrl').value = currentConfig.videoUrl || '';
+      document.getElementById('accentColor').value = currentConfig.accentColor || '#dc2626';
+      document.getElementById('backgroundColor').value = currentConfig.backgroundColor || '#fafafa';
+    }
+
+    // Reset to default configuration
+    function resetConfig() {
+      if (confirm('Are you sure you want to reset to default configuration? This will lose all current changes.')) {
+        currentConfig = { ...defaultConfig };
+        updateFormFields();
+        updatePreview();
+        showStatus('Configuration reset to default', 'info');
+      }
+    }
+
+    // Toggle live sync
+    function toggleLiveSync() {
+      liveSyncEnabled = document.getElementById('liveSyncToggle').checked;
+      showStatus(liveSyncEnabled ? 'Live sync enabled' : 'Live sync disabled', 'info', 2000);
+    }
+
+    // Load preset configurations
+    function loadPresetConfig(presetName) {
+      const presets = {
+        'zoeys-apt': {
+          template: 'brand',
+          title: 'Zoey\'s Apt',
+          subtitle: 'Premium Living Spaces & Lifestyle',
+          logo: 'Zoey\'s Apt logo.png',
+          tag: 'Premium Apartments',
+          description: 'Zoey\'s Apt offers exceptional apartment living with modern amenities, prime locations, and unmatched service that sets the standard for luxury residential experiences.',
+          videoUrl: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
+          accentColor: '#dc2626',
+          backgroundColor: '#fafafa'
+        },
+        'chinese': {
+          template: 'brand',
+          title: '佐伊公寓',
+          subtitle: '高端生活空间与品质生活',
+          logo: 'Zoey\'s Apt logo.png',
+          tag: '精品公寓',
+          description: '佐伊公寓致力于提供卓越的公寓生活体验，配备现代化设施、优越地理位置和无与伦比的服务，为高端住宅体验树立新标准。我们的每一处细节都体现着对品质生活的追求。',
+          videoUrl: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4',
+          accentColor: '#dc2626',
+          backgroundColor: '#fafafa'
+        },
+        'brand': {
+          template: 'brand',
+          title: 'Your Brand',
+          subtitle: 'Crafting Excellence Since Day One',
+          logo: 'https://via.placeholder.com/120x44/333/fff?text=LOGO',
+          tag: 'Premium Showcase',
+          description: 'For years, Your Brand has blended modern innovation with meticulous craftsmanship to redefine industry standards.',
+          videoUrl: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
+          accentColor: '#2563eb',
+          backgroundColor: '#fafafa'
+        },
+        'event': {
+          template: 'event',
+          title: 'Live Event Night',
+          subtitle: 'Every Last Thursday · 7PM - 9PM',
+          logo: 'https://via.placeholder.com/120x44/333/fff?text=EVENT',
+          tag: 'Live Events · Showcase',
+          description: 'Join us for an evening of amazing entertainment at our Live Event Showcase, held every last thursday of the month at our venue.',
+          videoUrl: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4',
+          accentColor: '#c00001',
+          backgroundColor: '#0b0b0c'
+        }
+      };
+
+      const preset = presets[presetName];
+      if (!preset) {
+        showStatus('Preset configuration not found', 'error');
+        return;
+      }
+
+      // Update current config
+      currentConfig = { ...preset };
+      
+      // Update form fields
+      updateFormFields();
+      
+      // Switch template if needed
+      if (preset.template !== currentTemplate) {
+        currentTemplate = preset.template;
+        document.querySelectorAll('.template-option').forEach(opt => opt.classList.remove('active'));
+        document.querySelector(`[data-template="${currentTemplate}"]`).classList.add('active');
+        document.getElementById('previewFrame').src = currentTemplate + '.html';
+      }
+      
+      // Update preview
+      setTimeout(() => {
+        updatePreview();
+      }, 500);
+      
+      showStatus(`Loaded preset: ${preset.title}`, 'success');
+    }
+
+    function exportConfig() {
+      const configJson = JSON.stringify(currentConfig, null, 2);
+      const blob = new Blob([configJson], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'ez-billboard-config.json';
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    function downloadHTML() {
+      // Generate customized HTML file
+      fetch(currentTemplate + '.html')
+        .then(response => response.text())
+        .then(html => {
+          // Replace placeholders with current config
+          let customizedHtml = html
+            .replace(/Your Brand/g, currentConfig.title)
+            .replace(/Crafting Excellence Since Day One/g, currentConfig.subtitle)
+            .replace(/Premium Showcase/g, currentConfig.tag)
+            .replace(/https:\/\/via\.placeholder\.com\/120x44\/333\/fff\?text=LOGO/g, currentConfig.logo)
+            .replace(/https:\/\/commondatastorage\.googleapis\.com\/gtv-videos-bucket\/sample\/BigBuckBunny\.mp4/g, currentConfig.videoUrl)
+            .replace(/#2563eb/g, currentConfig.accentColor)
+            .replace(/#fafafa/g, currentConfig.backgroundColor);
+
+          // Add watermark comment at the top
+          const watermarkComment = `<!-- EZ Billboard by Derrick Yao (.8, dot-eight) | yaomengy.com | https://github.com/derrickyau9 -->\n`;
+          customizedHtml = watermarkComment + customizedHtml;
+
+          const blob = new Blob([customizedHtml], { type: 'text/html' });
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = `ez-billboard-${currentTemplate}-customized.html`;
+          a.click();
+          URL.revokeObjectURL(url);
+        });
+    }
+
+    // Initialize
+    updatePreview();
+  </script>
+</body>
+</html>

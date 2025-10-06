@@ -1,0 +1,11 @@
+{
+  "template": "event",
+  "title": "Summer Music Festival",
+  "subtitle": "Every Saturday • 7PM - 11PM • Downtown Park",
+  "logo": "https://via.placeholder.com/120x44/ff6b35/ffffff?text=FESTIVAL",
+  "tag": "Live Music • Food • Fun",
+  "description": "Join us for an unforgettable evening of live music, delicious food, and amazing entertainment at our Summer Music Festival. Featuring local artists, food trucks, and activities for all ages!",
+  "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4",
+  "accentColor": "#ff6b35",
+  "backgroundColor": "#1a1a1a"
+}

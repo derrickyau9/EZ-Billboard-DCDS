@@ -1,0 +1,11 @@
+{
+  "template": "brand",
+  "title": "Zoey's Apt",
+  "subtitle": "Premium Living Spaces & Lifestyle",
+  "logo": "Zoey's Apt logo.png",
+  "tag": "Premium Apartments",
+  "description": "Zoey's Apt offers exceptional apartment living with modern amenities, prime locations, and unmatched service that sets the standard for luxury residential experiences.",
+  "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+  "accentColor": "#dc2626",
+  "backgroundColor": "#fafafa"
+}

@@ -1,0 +1,1064 @@
+<!-- EZ Billboard Brand Template by Derrick Yao (.8, dot-eight) | yaomengy.com | https://github.com/derrickyau9 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brand Showcase - Premium Product Display | EZ Billboard by Derrick Yao</title>
+  <meta name="description" content="Dynamic brand showcase template - EZ Billboard by Derrick Yao (.8, dot-eight)">
+  <meta name="author" content="Derrick Yao - yaomengy.com">
+  <meta name="license" content="CC BY-NC 4.0 - Creative Commons Attribution-NonCommercial 4.0 International">
+  <meta name="copyright" content="Copyright (c) 2024 Derrick Yao (.8, dot-eight)">
+  <!-- Watermark: .8, dot-eight | Created by Derrick Yao | yaomengy.com | https://github.com/derrickyau9 -->
+</head>
+<body>
+
+<!-- EZ Billboard Brand Showcase Container - by Derrick Yao (.8, dot-eight) -->
+<div class="brand-showcase-container" id="brandShowcaseContainer">
+  <div class="brand-showcase">
+
+    <!-- ===== HERO WITH VIDEO (16:9 ASPECT RATIO) ===== -->
+    <section class="brand-hero" aria-label="Brand Showcase">
+      <!-- Brand header -->
+      <div class="brand-header glass-effect">
+        <div class="brand-logo-group">
+          <img id="dynamicLogo" src="Zoey's Apt logo.png" alt="Zoey's Apt Logo" class="brand-logo" />
+        </div>
+        <span class="brand-dot">•</span>
+        <span id="dynamicTag" class="brand-tag">Premium Apartments</span>
+      </div>
+
+      <!-- 16:9 Video container -->
+      <video 
+        class="brand-hero__video"
+        autoplay 
+        muted 
+        loop 
+        playsinline
+        webkit-playsinline
+        preload="auto"
+        poster="https://via.placeholder.com/1920x1080/000/fff?text=VIDEO+POSTER">
+        <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <div class="brand-hero__overlay"></div>
+
+      <!-- Logo intro animation (centered) -->
+      <div class="brand-hero__intro-logo">
+        <img src="Zoey's Apt logo.png" alt="Zoey's Apt Logo" />
+      </div>
+
+      <!-- Title glass block -->
+      <div class="brand-title-glass glass-effect">
+        <div class="brand-glass-logo">
+          <img src="Zoey's Apt logo.png" alt="Zoey's Apt Logo" />
+        </div>
+        <div class="brand-glass-content">
+          <h1 id="dynamicTitle" class="brand-glass-title">Zoey's Apt</h1>
+          <p id="dynamicSubtitle" class="brand-glass-sub">Premium Living Spaces & Lifestyle</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== COMPACT INTRO SECTION ===== -->
+    <section class="brand-intro">
+      <div class="brand-intro__container">
+        <h2 id="dynamicIntroTitle" class="brand-intro__title">Premium Living Redefined</h2>
+        <p id="dynamicDescription" class="brand-intro__lead">
+          <strong id="dynamicBrandName">Zoey's Apt</strong> offers exceptional apartment living with modern amenities, prime locations, and unmatched service that sets the standard for luxury residential experiences.
+        </p>
+      </div>
+    </section>
+
+    <!-- ===== WHY CHOOSE SECTION ===== -->
+    <section class="brand-why">
+      <div class="brand-why__container glass-effect">
+        <h3 class="brand-why__title">Why Choose Zoey's Apt</h3>
+        <p id="dynamicWhyText" class="brand-why__text">
+          Our <strong>apartments</strong> offer a perfect blend of comfort and sophistication. You gain access to premium living spaces with modern amenities, prime locations, and exceptional service. Whether you're a young professional, growing family, or seeking luxury, <strong id="dynamicBrandName2">Zoey's Apt</strong> provides the lifestyle you deserve.
+        </p>
+      </div>
+    </section>
+
+    <!-- EZ Billboard Watermark - by Derrick Yao (.8, dot-eight) -->
+    <div class="ez-billboard-watermark">
+      <p>Powered by <a href="https://yaomengy.com" target="_blank">EZ Billboard</a> | Created by <a href="https://github.com/derrickyau9" target="_blank">Derrick Yao</a> (.8, dot-eight)</p>
+    </div>
+    
+    <!-- Hidden Watermark Protection - DO NOT REMOVE -->
+    <div id="hw-protection" style="position:absolute;top:-9999px;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none;"></div>
+
+  </div>
+</div>
+
+<!-- ===== SCRIPT - EZ Billboard by Derrick Yao (.8, dot-eight) ===== -->
+<script>
+// EZ Billboard Dynamic Configuration System
+// Created by Derrick Yao (.8, dot-eight) - yaomengy.com - https://github.com/derrickyau9
+(function() {
+  'use strict';
+  
+  var containerEl = document.getElementById('brandShowcaseContainer');
+  if (!containerEl) return;
+  
+  var STORAGE_KEY = 'brandShowcaseAnimationsPlayed';
+  var animationsPlayed = sessionStorage.getItem(STORAGE_KEY);
+
+  function initBrandShowcase() {
+    var video = containerEl.querySelector('.brand-hero__video');
+    
+    if (video) {
+      video.setAttribute('autoplay', '');
+      video.setAttribute('muted', '');
+      video.setAttribute('playsinline', '');
+      video.setAttribute('webkit-playsinline', '');
+      video.muted = true;
+      video.playsInline = true;
+      video.defaultMuted = true;
+      
+      var playAttempted = false;
+      var attemptPlay = function() {
+        if (playAttempted) return;
+        
+        if (video.readyState >= 2) {
+          playAttempted = true;
+          var playPromise = video.play();
+          if (playPromise !== undefined) {
+            playPromise.then(function() {
+              console.log('Video playing successfully');
+            }).catch(function(error) {
+              console.log('Video autoplay failed:', error);
+              playAttempted = false;
+              
+              var playOnInteraction = function() {
+                if (!playAttempted) {
+                  playAttempted = true;
+                  video.play().then(function() {
+                    console.log('Video started on user interaction');
+                  }).catch(function(e) {
+                    console.log('Manual play failed:', e);
+                    playAttempted = false;
+                  });
+                }
+              };
+              document.addEventListener('touchstart', playOnInteraction, { once: true });
+              document.addEventListener('click', playOnInteraction, { once: true });
+            });
+          }
+        }
+      };
+      
+      if (video.readyState >= 2) {
+        attemptPlay();
+      } else {
+        video.addEventListener('loadeddata', attemptPlay, { once: true });
+        video.addEventListener('canplay', attemptPlay, { once: true });
+      }
+      
+      video.addEventListener('error', function(e) {
+        console.error('Video error:', e);
+        video.style.display = 'none';
+      });
+      
+      if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
+        video.load();
+      }
+    }
+    
+    if (!animationsPlayed) {
+      containerEl.classList.add('brand-animations-started');
+      sessionStorage.setItem(STORAGE_KEY, 'true');
+      
+      setTimeout(function() {
+        var introLogo = containerEl.querySelector('.brand-hero__intro-logo');
+        if (introLogo) {
+          introLogo.style.display = 'none';
+        }
+      }, 3500);
+      
+      setTimeout(function() {
+        containerEl.classList.add('brand-animations-complete');
+      }, 5500);
+    } else {
+      containerEl.classList.add('brand-animations-complete');
+      var introLogo = containerEl.querySelector('.brand-hero__intro-logo');
+      if (introLogo) introLogo.style.display = 'none';
+      
+      var elements = containerEl.querySelectorAll('.brand-title-glass, .brand-header, .brand-hero__video, .brand-hero__overlay');
+      elements.forEach(function(el) {
+        el.style.animation = 'none';
+        el.style.opacity = '1';
+        el.style.transform = 'none';
+      });
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initBrandShowcase);
+  } else {
+    initBrandShowcase();
+  }
+
+  // EZ Billboard Dynamic Configuration Listener - by Derrick Yao (.8, dot-eight)
+  window.addEventListener('message', function(event) {
+    if (event.data.type === 'updateConfig') {
+      const config = event.data.config;
+      
+      // Update dynamic content
+      if (config.title) {
+        const titleEl = document.getElementById('dynamicTitle');
+        const brandNameEls = document.querySelectorAll('#dynamicBrandName, #dynamicBrandName2');
+        const introTitleEl = document.getElementById('dynamicIntroTitle');
+        
+        if (titleEl) titleEl.textContent = config.title;
+        brandNameEls.forEach(el => el.textContent = config.title);
+        if (introTitleEl) introTitleEl.textContent = config.title + ' - Innovation & Excellence';
+      }
+      
+      if (config.subtitle) {
+        const subtitleEl = document.getElementById('dynamicSubtitle');
+        if (subtitleEl) subtitleEl.textContent = config.subtitle;
+      }
+      
+      if (config.logo) {
+        const logoEl = document.getElementById('dynamicLogo');
+        const glassLogoEl = document.querySelector('.brand-glass-logo img');
+        const introLogoEl = document.querySelector('.brand-hero__intro-logo img');
+        
+        if (logoEl) logoEl.src = config.logo;
+        if (glassLogoEl) glassLogoEl.src = config.logo;
+        if (introLogoEl) introLogoEl.src = config.logo;
+      }
+      
+      if (config.tag) {
+        const tagEl = document.getElementById('dynamicTag');
+        if (tagEl) tagEl.textContent = config.tag;
+      }
+      
+      if (config.description) {
+        const descEl = document.getElementById('dynamicDescription');
+        if (descEl) {
+          descEl.innerHTML = config.description.replace(config.title || 'Your Brand', '<strong>' + (config.title || 'Your Brand') + '</strong>');
+        }
+      }
+      
+      if (config.videoUrl) {
+        const videoEl = document.querySelector('.brand-hero__video');
+        if (videoEl) {
+          videoEl.src = config.videoUrl;
+          videoEl.load(); // Reload video with new source
+        }
+      }
+      
+      if (config.accentColor) {
+        document.documentElement.style.setProperty('--brand-accent', config.accentColor);
+        document.documentElement.style.setProperty('--brand-accent-alt', config.accentColor + 'dd');
+        document.documentElement.style.setProperty('--brand-accent-dark', config.accentColor + 'bb');
+      }
+      
+      if (config.backgroundColor) {
+        document.documentElement.style.setProperty('--brand-bg-light', config.backgroundColor);
+        document.documentElement.style.setProperty('--brand-bg-section', config.backgroundColor + 'f5');
+      }
+    }
+  });
+
+  // Hidden Watermark Protection System - DO NOT REMOVE
+  // License: CC BY-NC 4.0 - Creative Commons Attribution-NonCommercial 4.0
+  // Copyright (c) 2024 Derrick Yao (.8, dot-eight)
+  (function() {
+    'use strict';
+    
+    // Encrypted watermark data
+    const _0x4a8b = ['aHR0cHM6Ly9jZG4uNDA5Ni50ZWNoLy44LnBuZw==', 'hw-protection', 'createElement', 'img', 'src', 'style', 'position:absolute;top:-1px;left:-1px;width:1px;height:1px;opacity:0.01;z-index:-1;pointer-events:none;', 'appendChild', 'body'];
+    
+    function _0x2d4c(str) {
+      try {
+        return atob(str);
+      } catch(e) {
+        return '';
+      }
+    }
+    
+    function _0x1f3e() {
+      const container = document.getElementById(_0x4a8b[1]);
+      if (!container) return;
+      
+      const img = document[_0x4a8b[2]](_0x4a8b[3]);
+      img[_0x4a8b[4]] = _0x2d4c(_0x4a8b[0]);
+      img[_0x4a8b[5]] = _0x4a8b[6];
+      img.onload = function() { this.style.opacity = '0'; };
+      img.onerror = function() { this.remove(); };
+      
+      container[_0x4a8b[7]](img);
+      
+      // Additional protection layers
+      const canvas = document.createElement('canvas');
+      canvas.width = 1;
+      canvas.height = 1;
+      canvas.style.cssText = 'position:absolute;top:-2px;left:-2px;width:1px;height:1px;opacity:0;z-index:-2;';
+      const ctx = canvas.getContext('2d');
+      ctx.fillStyle = 'rgba(0,0,0,0.01)';
+      ctx.fillRect(0, 0, 1, 1);
+      container.appendChild(canvas);
+    }
+    
+    // License validation
+    function _0x5c7a() {
+      const licenseCheck = document.querySelector('meta[name="license"]');
+      if (!licenseCheck || !licenseCheck.content.includes('CC BY-NC 4.0')) {
+        console.warn('EZ Billboard: License validation required');
+      }
+    }
+    
+    // Initialize protection
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', function() {
+        setTimeout(_0x1f3e, 1000);
+        _0x5c7a();
+      });
+    } else {
+      setTimeout(_0x1f3e, 1000);
+      _0x5c7a();
+    }
+    
+    // Anti-tampering protection
+    const observer = new MutationObserver(function(mutations) {
+      mutations.forEach(function(mutation) {
+        if (mutation.type === 'childList') {
+          mutation.removedNodes.forEach(function(node) {
+            if (node.id === 'hw-protection' || (node.className && node.className.includes('ez-billboard-watermark'))) {
+              console.error('EZ Billboard: Watermark removal detected. License violation.');
+              setTimeout(_0x1f3e, 100);
+            }
+          });
+        }
+      });
+    });
+    
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true
+    });
+  })();
+})();
+</script>
+
+<!-- ===== SCOPED STYLES - EZ Billboard by Derrick Yao (.8, dot-eight) ===== -->
+<style>
+  /* EZ Billboard Brand Template Styles - Created by Derrick Yao (.8, dot-eight) | yaomengy.com | https://github.com/derrickyau9 */
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+  
+  /* HarmonyOS Sans SC 字体 - 支持中文显示 */
+  @font-face {
+    font-family: 'HarmonyOS Sans SC';
+    src: url('HarmonyOS_Sans_SC/HarmonyOS_Sans_SC_Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+  
+  @font-face {
+    font-family: 'HarmonyOS Sans SC';
+    src: url('HarmonyOS_Sans_SC/HarmonyOS_Sans_SC_Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+  }
+  
+  @font-face {
+    font-family: 'HarmonyOS Sans SC';
+    src: url('HarmonyOS_Sans_SC/HarmonyOS_Sans_SC_Bold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+  }
+  
+  @font-face {
+    font-family: 'HarmonyOS Sans SC';
+    src: url('HarmonyOS_Sans_SC/HarmonyOS_Sans_SC_Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+  }
+  
+  @font-face {
+    font-family: 'HarmonyOS Sans SC';
+    src: url('HarmonyOS_Sans_SC/HarmonyOS_Sans_SC_Black.ttf') format('truetype');
+    font-weight: 800;
+    font-style: normal;
+    font-display: swap;
+  }
+  
+  @font-face {
+    font-family: 'HarmonyOS Sans SC';
+    src: url('HarmonyOS_Sans_SC/HarmonyOS_Sans_SC_Black.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+  }
+  
+  @font-face {
+    font-family: 'Sentinel Black';
+    src: url('path-to-sentinel-black.woff2') format('woff2'),
+         url('path-to-sentinel-black.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+  }
+
+  .brand-showcase-container * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* THEME COLOR VARIABLES */
+  .brand-showcase-container {
+    --brand-bg-light: #fafafa;
+    --brand-bg-section: #f5f5f5;
+    --brand-text-dark: #1a1a1a;
+    --brand-text-muted: #4a4a4a;
+    --brand-accent: #dc2626;
+    --brand-accent-alt: #b91c1c;
+    --brand-accent-dark: #991b1b;
+    --brand-radius: 12px;
+    --brand-shadow: 0 10px 40px rgba(0,0,0,.08);
+    font-family: 'HarmonyOS Sans SC', 'Inter', system-ui, -apple-system, sans-serif;
+    line-height: 1.6;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    background: var(--brand-bg-light);
+  }
+
+  .brand-showcase {
+    width: 100%;
+    position: relative;
+  }
+
+  /* GLASS EFFECT */
+  .glass-effect {
+    position: relative;
+    background: rgba(255,255,255,.45);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    backdrop-filter: blur(20px) saturate(180%);
+    border-radius: var(--brand-radius);
+    box-shadow: 0 8px 32px rgba(0,0,0,.08), inset 0 0 0 1px rgba(255,255,255,.6);
+    border: 1px solid rgba(220,38,38,.15);
+  }
+
+  /* Hero Section - 16:9 */
+  .brand-hero {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    max-height: 85vh;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+    background: #f8f8f8;
+    color: var(--brand-text-dark);
+  }
+
+  /* Logo intro animation */
+  .brand-hero__intro-logo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200px;
+    height: 200px;
+    z-index: 9999;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+  }
+  
+  .brand-animations-started .brand-hero__intro-logo {
+    opacity: 1;
+    animation: brandLogoIntro 3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+
+  .brand-hero__intro-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: brightness(1.1) drop-shadow(0 0 30px rgba(192, 0, 1, 0.3));
+  }
+  
+  @keyframes brandLogoIntro {
+    0% {
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(0.3) rotate(-180deg);
+    }
+    40% {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1.1) rotate(0deg);
+    }
+    70% {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1) rotate(0deg);
+    }
+    100% {
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(0.95) rotate(0deg);
+    }
+  }
+
+  /* Video background */
+  .brand-hero__video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    z-index: 1;
+    opacity: 0;
+    animation: brandVideoFadeIn 2s ease-out 3.5s forwards;
+    display: block;
+  }
+  
+  @keyframes brandVideoFadeIn {
+    to { opacity: 1; }
+  }
+
+  .brand-hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: transparent;
+    opacity: 0;
+    z-index: 3;
+    pointer-events: none;
+  }
+  
+  @keyframes brandOverlayFadeIn {
+    to { opacity: 1; }
+  }
+
+  /* Brand header */
+  .brand-header {
+    position: absolute;
+    top: 24px;
+    left: 24px;
+    z-index: 6;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 14px;
+    opacity: 0;
+    transform: translateX(-20px);
+    animation: brandHeaderFadeIn 0.8s ease-out 2s forwards;
+  }
+  
+  @keyframes brandHeaderFadeIn {
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  .brand-logo-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .brand-logo {
+    height: 42px;
+    width: auto;
+  }
+
+  .brand-secondary-logo {
+    height: 42px;
+    width: 42px;
+    object-fit: contain;
+  }
+
+  .brand-separator {
+    color: var(--brand-accent);
+    font-weight: 300;
+    font-size: 20px;
+    opacity: 0.7;
+  }
+
+  .brand-tag {
+    font-weight: 600;
+    letter-spacing: .5px;
+    font-size: 14px;
+    color: var(--brand-text-muted);
+  }
+
+  .brand-dot {
+    opacity: .5;
+    color: var(--brand-text-muted);
+  }
+
+  /* Title glass block - Enhanced white theme glass */
+  .brand-title-glass {
+    position: absolute;
+    bottom: 40px;
+    left: 40px;
+    z-index: 6;
+    padding: 20px 24px;
+    max-width: 580px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: brandGlassFadeIn 1s ease-out 2s forwards;
+    background: rgba(255,255,255,.5);
+  }
+  
+  @keyframes brandGlassFadeIn {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .brand-glass-logo {
+    flex-shrink: 0;
+  }
+
+  .brand-glass-logo img {
+    width: 90px;
+    height: 90px;
+    object-fit: contain;
+    filter: brightness(1);
+  }
+
+  .brand-glass-content {
+    flex: 1;
+  }
+
+  .brand-glass-title {
+    font-weight: 900;
+    font-size: clamp(28px, 4vw, 42px);
+    margin: 0 0 4px 0;
+    color: var(--brand-text-dark);
+    line-height: 1.1;
+    letter-spacing: -0.5px;
+    font-family: 'HarmonyOS Sans SC', 'Sentinel Black', 'Inter', sans-serif;
+  }
+
+  .brand-glass-sub {
+    margin: 0;
+    color: var(--brand-text-muted);
+    font-size: clamp(14px, 2vw, 18px);
+    font-weight: 500;
+    letter-spacing: 0.3px;
+  }
+
+  /* Compact Intro Section */
+  .brand-intro {
+    padding: 60px 20px 50px;
+    background: var(--brand-bg-light);
+    color: var(--brand-text-dark);
+  }
+
+  .brand-intro__container {
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .brand-intro__title {
+    font-size: clamp(32px, 5vw, 42px);
+    font-weight: 900;
+    color: var(--brand-text-dark);
+    margin-bottom: 20px;
+    letter-spacing: -0.5px;
+    font-family: 'HarmonyOS Sans SC', 'Sentinel Black', 'Inter', sans-serif;
+  }
+
+  .brand-intro__lead {
+    font-size: clamp(17px, 2.5vw, 20px);
+    line-height: 1.6;
+    color: var(--brand-text-muted);
+    max-width: 800px;
+    margin: 0 auto;
+    font-weight: 400;
+  }
+
+  .brand-intro__lead strong {
+    color: var(--brand-accent-dark);
+    font-weight: 700;
+  }
+
+  /* Features Section */
+  .brand-features {
+    padding: 60px 20px 80px;
+    background: var(--brand-bg-section);
+  }
+
+  .brand-features__container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .brand-features__title {
+    font-size: clamp(28px, 4vw, 38px);
+    font-weight: 900;
+    color: var(--brand-text-dark);
+    text-align: center;
+    margin-bottom: 50px;
+    letter-spacing: -0.3px;
+    font-family: 'HarmonyOS Sans SC', 'Sentinel Black', 'Inter', sans-serif;
+  }
+
+  .brand-features__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+  }
+
+  .brand-feature-card {
+    padding: 30px;
+    background: rgba(255,255,255,.5);
+    border-color: rgba(192,0,1,.2);
+    transition: all 0.3s ease;
+  }
+
+  .brand-feature-card:hover {
+    background: rgba(255,255,255,.7);
+    transform: translateY(-4px);
+    box-shadow: 0 20px 50px rgba(0,0,0,.12);
+    border-color: rgba(192,0,1,.4);
+  }
+
+  .brand-feature-card__title {
+    font-size: clamp(20px, 2.5vw, 24px);
+    font-weight: 800;
+    color: var(--brand-accent);
+    margin-bottom: 12px;
+    font-family: 'HarmonyOS Sans SC', 'Sentinel Black', 'Inter', sans-serif;
+  }
+
+  .brand-feature-card__text {
+    font-size: clamp(15px, 2vw, 17px);
+    line-height: 1.6;
+    color: var(--brand-text-muted);
+  }
+
+  /* Why Choose Section */
+  .brand-why {
+    padding: 0 20px 80px;
+    background: var(--brand-bg-light);
+  }
+
+  .brand-why__container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 50px;
+    background: linear-gradient(135deg, rgba(192,0,1,.05), rgba(160,0,1,.05));
+    border-color: rgba(192,0,1,.25);
+  }
+
+  .brand-why__title {
+    font-size: clamp(28px, 4vw, 36px);
+    font-weight: 900;
+    color: var(--brand-accent);
+    margin-bottom: 24px;
+    text-align: center;
+    letter-spacing: -0.3px;
+    font-family: 'HarmonyOS Sans SC', 'Sentinel Black', 'Inter', sans-serif;
+  }
+
+  .brand-why__text {
+    font-size: clamp(17px, 2vw, 20px);
+    line-height: 1.8;
+    color: var(--brand-text-muted);
+    text-align: center;
+  }
+
+  .brand-why__text strong {
+    color: var(--brand-text-dark);
+    font-weight: 700;
+  }
+
+  /* Complete animations */
+  .brand-brand-container.brand-animations-complete .brand-title-glass,
+  .brand-brand-container.brand-animations-complete .brand-brand-header,
+  .brand-brand-container.brand-animations-complete .brand-hero__overlay,
+  .brand-brand-container.brand-animations-complete .brand-hero__video {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* Tablet responsive */
+  @media (max-width: 1024px) {
+    .brand-hero {
+      max-height: 70vh;
+    }
+    
+    .brand-title-glass {
+      bottom: 30px;
+      left: 30px;
+      max-width: 500px;
+      padding: 18px 22px;
+    }
+    
+    .brand-glass-logo img {
+      width: 75px;
+      height: 75px;
+    }
+
+    .brand-intro {
+      padding: 50px 20px 40px;
+    }
+
+    .brand-features {
+      padding: 50px 20px 60px;
+    }
+
+    .brand-why__container {
+      padding: 40px;
+    }
+  }
+
+  /* Mobile responsive */
+  @media (max-width: 768px) {
+    .brand-hero {
+      aspect-ratio: 16 / 9;
+      max-height: none;
+    }
+    
+    .brand-brand-header {
+      top: 12px;
+      left: 12px;
+      padding: 6px 10px;
+      gap: 8px;
+    }
+
+    .brand-logo-group {
+      gap: 6px;
+    }
+
+    .brand-logo {
+      height: 34px;
+    }
+
+    .brand-secondary-logo {
+      height: 34px;
+      width: 34px;
+    }
+
+    .brand-separator {
+      font-size: 16px;
+    }
+
+    .brand-tag {
+      font-size: 11px;
+    }
+
+    .brand-title-glass {
+      bottom: 20px;
+      left: 16px;
+      right: 16px;
+      max-width: none;
+      padding: 16px 18px;
+      gap: 16px;
+    }
+
+    .brand-glass-logo img {
+      width: 60px;
+      height: 60px;
+    }
+
+    .brand-glass-title {
+      font-size: clamp(24px, 5vw, 32px);
+    }
+
+    .brand-glass-sub {
+      font-size: clamp(13px, 2.5vw, 16px);
+    }
+
+    .brand-hero__intro-logo {
+      width: 160px;
+      height: 160px;
+    }
+
+    .brand-intro {
+      padding: 40px 16px 35px;
+    }
+
+    .brand-intro__title {
+      font-size: clamp(28px, 5vw, 34px);
+      margin-bottom: 16px;
+    }
+
+    .brand-intro__lead {
+      font-size: clamp(16px, 2.5vw, 18px);
+    }
+
+    .brand-features {
+      padding: 40px 16px 50px;
+    }
+
+    .brand-features__title {
+      font-size: clamp(24px, 4vw, 30px);
+      margin-bottom: 30px;
+    }
+
+    .brand-features__grid {
+      gap: 16px;
+    }
+
+    .brand-feature-card {
+      padding: 20px;
+    }
+
+    .brand-feature-card__title {
+      font-size: clamp(18px, 2.5vw, 20px);
+      margin-bottom: 10px;
+    }
+
+    .brand-feature-card__text {
+      font-size: clamp(14px, 2vw, 15px);
+    }
+
+    .brand-why {
+      padding: 0 16px 50px;
+    }
+
+    .brand-why__container {
+      padding: 30px 24px;
+    }
+
+    .brand-why__title {
+      font-size: clamp(24px, 4vw, 28px);
+      margin-bottom: 20px;
+    }
+
+    .brand-why__text {
+      font-size: clamp(15px, 2vw, 17px);
+      line-height: 1.7;
+    }
+  }
+  
+  /* Small mobile */
+  @media (max-width: 480px) {
+    .brand-hero {
+      aspect-ratio: 16 / 9;
+    }
+    
+    .brand-brand-header {
+      top: 10px;
+      left: 10px;
+      padding: 5px 8px;
+      gap: 6px;
+    }
+    
+    .brand-logo {
+      height: 28px;
+    }
+
+    .brand-secondary-logo {
+      height: 28px;
+      width: 28px;
+    }
+    
+    .brand-separator {
+      font-size: 14px;
+    }
+
+    .brand-tag {
+      font-size: 10px;
+      display: none;
+    }
+    
+    .brand-title-glass {
+      bottom: 16px;
+      left: 12px;
+      right: 12px;
+      padding: 14px 16px;
+      gap: 14px;
+    }
+
+    .brand-glass-logo img {
+      width: 50px;
+      height: 50px;
+    }
+
+    .brand-glass-title {
+      font-size: clamp(20px, 5vw, 26px);
+    }
+
+    .brand-glass-sub {
+      font-size: clamp(12px, 2.5vw, 14px);
+    }
+
+    .brand-hero__intro-logo {
+      width: 140px;
+      height: 140px;
+    }
+
+    .brand-intro {
+      padding: 35px 12px 30px;
+    }
+
+    .brand-features {
+      padding: 30px 12px 40px;
+    }
+
+    .brand-feature-card {
+      padding: 18px;
+    }
+
+    .brand-why {
+      padding: 0 12px 40px;
+    }
+
+    .brand-why__container {
+      padding: 24px 20px;
+    }
+  }
+
+  /* EZ Billboard Watermark Styles - by Derrick Yao (.8, dot-eight) */
+  .ez-billboard-watermark {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    background: rgba(0,0,0,0.7);
+    color: rgba(255,255,255,0.8);
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 500;
+    z-index: 9999;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.1);
+    transition: all 0.3s ease;
+  }
+
+  .ez-billboard-watermark:hover {
+    background: rgba(0,0,0,0.9);
+    color: rgba(255,255,255,1);
+  }
+
+  .ez-billboard-watermark a {
+    color: var(--brand-accent, #2563eb);
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .ez-billboard-watermark a:hover {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 768px) {
+    .ez-billboard-watermark {
+      font-size: 10px;
+      padding: 6px 8px;
+      bottom: 5px;
+      right: 5px;
+    }
+  }
+</style>
+
+</body>
+</html>

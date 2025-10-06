@@ -1,0 +1,220 @@
+<!-- EZ Billboard Quick Launcher by Derrick Yao (.8, dot-eight) | yaomengy.com | https://github.com/derrickyau9 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EZ Billboard - Quick Launch | by Derrick Yao</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* HarmonyOS Sans SC 字体 - 支持中文显示 */
+    @font-face {
+      font-family: 'HarmonyOS Sans SC';
+      src: url('HarmonyOS_Sans_SC/HarmonyOS_Sans_SC_Regular.ttf') format('truetype');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+    
+    @font-face {
+      font-family: 'HarmonyOS Sans SC';
+      src: url('HarmonyOS_Sans_SC/HarmonyOS_Sans_SC_Bold.ttf') format('truetype');
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
+    }
+    
+    @font-face {
+      font-family: 'HarmonyOS Sans SC';
+      src: url('HarmonyOS_Sans_SC/HarmonyOS_Sans_SC_Black.ttf') format('truetype');
+      font-weight: 900;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    body {
+      font-family: 'HarmonyOS Sans SC', 'Inter', system-ui, -apple-system, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+    }
+
+    .launcher {
+      text-align: center;
+      max-width: 600px;
+      padding: 40px;
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(20px);
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+
+    .logo {
+      font-size: 4rem;
+      font-weight: 900;
+      margin-bottom: 20px;
+      text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    }
+
+    .tagline {
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+      opacity: 0.9;
+    }
+
+    .watermark {
+      font-size: 1rem;
+      margin-bottom: 40px;
+      opacity: 0.8;
+    }
+
+    .watermark a {
+      color: rgba(255,255,255,0.9);
+      text-decoration: none;
+    }
+
+    .watermark a:hover {
+      text-decoration: underline;
+    }
+
+    .options {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+
+    .option {
+      background: rgba(255,255,255,0.15);
+      padding: 30px 20px;
+      border-radius: 15px;
+      border: 2px solid rgba(255,255,255,0.2);
+      transition: all 0.3s ease;
+      cursor: pointer;
+      text-decoration: none;
+      color: white;
+    }
+
+    .option:hover {
+      background: rgba(255,255,255,0.25);
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    }
+
+    .option h3 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+    }
+
+    .option p {
+      opacity: 0.9;
+      line-height: 1.5;
+    }
+
+    .quick-links {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .quick-link {
+      background: rgba(255,255,255,0.2);
+      padding: 10px 20px;
+      border-radius: 25px;
+      text-decoration: none;
+      color: white;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .quick-link:hover {
+      background: rgba(255,255,255,0.3);
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 768px) {
+      .launcher {
+        margin: 20px;
+        padding: 30px 20px;
+      }
+      
+      .logo {
+        font-size: 3rem;
+      }
+      
+      .options {
+        grid-template-columns: 1fr;
+      }
+      
+      .quick-links {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Watermark: .8, dot-eight | Created by Derrick Yao | yaomengy.com | https://github.com/derrickyau9 -->
+  
+  <div class="launcher">
+    <div class="logo">EZ Billboard</div>
+    <div class="tagline">Dynamic Content Display System</div>
+    <div class="watermark">
+      Created by <a href="https://yaomengy.com" target="_blank">Derrick Yao</a> (.8, dot-eight) | 
+      <a href="https://github.com/derrickyau9" target="_blank">GitHub</a>
+    </div>
+
+    <div class="options">
+      <a href="index.html" class="option">
+        <h3>🎨 Configuration Panel</h3>
+        <p>Customize your billboard with the browser-based interface. No coding required!</p>
+      </a>
+      
+      <a href="brand.html" class="option">
+        <h3>🏢 Brand Showcase</h3>
+        <p>Direct access to the brand template. Perfect for product launches and presentations.</p>
+      </a>
+      
+      <a href="event.html" class="option">
+        <h3>🎉 Event Billboard</h3>
+        <p>Direct access to the event template. Ideal for live events and countdown displays.</p>
+      </a>
+    </div>
+
+    <div class="quick-links">
+      <a href="README.md" class="quick-link" target="_blank">📖 Documentation</a>
+      <a href="DEPLOYMENT.md" class="quick-link" target="_blank">🚀 Deployment Guide</a>
+      <a href="config-examples/" class="quick-link" target="_blank">⚙️ Config Examples</a>
+    </div>
+  </div>
+
+  <script>
+    // EZ Billboard Quick Launcher
+    // Created by Derrick Yao (.8, dot-eight) - yaomengy.com - https://github.com/derrickyau9
+    
+    // Add some interactive effects
+    document.querySelectorAll('.option').forEach(option => {
+      option.addEventListener('mouseenter', function() {
+        this.style.transform = 'translateY(-5px) scale(1.02)';
+      });
+      
+      option.addEventListener('mouseleave', function() {
+        this.style.transform = 'translateY(0) scale(1)';
+      });
+    });
+
+    // Welcome message
+    console.log('%cEZ Billboard by Derrick Yao (.8, dot-eight)', 'color: #667eea; font-size: 20px; font-weight: bold;');
+    console.log('%cVisit: yaomengy.com | GitHub: github.com/derrickyau9', 'color: #764ba2; font-size: 14px;');
+  </script>
+</body>
+</html>
