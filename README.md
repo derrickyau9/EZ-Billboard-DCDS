@@ -17,6 +17,10 @@ EZ Billboard is a browser-based tool for creating dynamic brand showcases and ev
 - **Two Professional Templates:** Start with either the "Brand Showcase" or "Event Billboard" template.
 - **Live Event Tools:** The Event template includes countdown timers and live status indicators.
 
+  ![](https://cdn.4096.tech/demo.png)
+
+  ![](https://cdn.4096.tech/demo_event.png)
+
 #### Quick Setup
 
 **1. Direct Deployment:**
@@ -55,3 +59,5 @@ EZ Billboard is a browser-based tool for creating dynamic brand showcases and ev
 This project is licensed under the **Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)** license. Commercial use is prohibited without a separate license. For commercial licensing, please contact Derrick Yao.
 
 **Copyright © 2025 Derrick Yao (.8, dot-eight) - All Rights Reserved**
+
+![](https://cdn.4096.tech/dot-eight.png)
